@@ -14,7 +14,15 @@ export function red_index_tit (state = '上面一旦重新填我就变了', acti
             return state
     }
 }
+//标题
+export function red_head_tit (state = 'react_home', action) {
+    switch (action.type) {
+        default:
+            return state
+    }
+}
 const rootReducer = combineReducers({
-    red_index_tit
+    red_index_tit,
+    red_head_tit
 })
 export default rootReducer

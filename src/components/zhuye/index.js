@@ -8,7 +8,7 @@ import {connect} from "react-redux"
 import * as index_act from "../../actions/index";
 import {mapstate} from "../../reducers/shuju"
 import {hashHistory, browserHistory} from "react-router"
-
+import Head from '../public/head'
 
 
 class Index extends React.Component {
@@ -30,6 +30,7 @@ class Index extends React.Component {
     render() {
         return (
             <div className="zhuye">
+                <Head {...this.props}/>
                 <div>
                     <Input type="text" onChange={this.gaizi.bind(this)} placeholder="填入试试下面得字会变"/>
                 </div>
