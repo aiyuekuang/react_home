@@ -11,7 +11,7 @@
 7. 本项目引入了[esn](https://github.com/aiyuekuang/esn.git)得库，一个很小巧得数据操作库，在开发过程中，里面得很多功能都能用到，2个字方便
 
 # 更新日志  
-[日志地址](https://github.com/aiyuekuang/react_home/blob/master/doc/doc.md)  
+[日志地址](https://github.com/aiyuekuang/react_home/doc/doc.MD)  
 
 # 使用方法：
     安装模块：npm install  
