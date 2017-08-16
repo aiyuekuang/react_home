@@ -19,7 +19,7 @@ class Tui extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="neiye">
                 我是内页
             </div>
         )

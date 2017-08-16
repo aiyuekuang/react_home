@@ -6,7 +6,7 @@ import NProgress from 'nprogress';
 
 export function act_index_tit(data) {
     return {
-        type: "SHOUYE_TIT",
+        type: "INDEX_TIT",
         data: data
     };
 }

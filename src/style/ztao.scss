@@ -5,7 +5,14 @@
 @import "nprogress.css";
 @import "anim.scss";
 //@import "hover/hover";
-
-.hah{
-  color: red;
+.zhuye{
+  @include juzhong(500px);
+  padding: 20px;
+  >div{
+   padding: 10px;
+  }
+}
+.neiye{
+  text-align: center;
+  padding: 20px;
 }
