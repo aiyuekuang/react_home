@@ -33,8 +33,10 @@ app.use('/build',express.static(__dirname + '/build/'))
 //options可选的配置参数请自行看readme.md文档，通常只需要配置target，也就是你的api所属的域名。
 
 //将options对象用proxy封装起来，作为参数传递
+//这里得111什么得，是我乱写得，你实际用得时候改成你们得接口地址得ip
+
 const apiProxy = proxy({
-    target: 'http://116.62.148.142',
+    target: 'http://111.111.11.11',
     changeOrigin: true
 });
 
