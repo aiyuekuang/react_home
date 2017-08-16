@@ -1,0 +1,267 @@
+
+$lanse: #008adf;
+$chengse: #ef8d47;
+$huise: #e7e7e7;
+$huizi: #666666;
+$xiaohuizi: #999999;
+$kuan: 1160px;
+$biankuang: 1px solid $huise;
+$biankuang_lan: 2px solid $lanse;
+$landan:#7ac7ef;
+$dlhui:#f5f5f5;
+$hongse:#ff0000;
+$sjhuidi:#f2f2f2;
+$yi_lv:#49b953;
+$yi_cheng:#ffb417;
+$heise:#373e40;
+
+$lushuibg:#f8f8f8;
+
+$biaotizi:17px;
+
+
+
+a{
+  text-decoration:none ;
+}
+.hongzi{
+  color: $hongse!important;
+}
+.lvzi{
+  color: $yi_lv!important;
+}
+.mal5{
+  margin-left: 5px;
+}
+.mab5{
+  margin-bottom:5px;
+}
+.mat5{
+  margin-top:5px;
+}
+.mat10{
+  margin-top:10px;
+}
+.mal10{
+  margin-left: 10px;
+}
+
+.ztao{
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1366px;
+  min-width: 1024px;
+}
+.lanzi{
+  color: $lanse;
+  cursor: pointer;
+}
+
+.zi12{
+  font-size: 12px;
+}
+
+.btn_lanse {
+  @include btn($lanse, #fff);
+}
+.btn_lanbian{
+  border: $yi_lv 1px solid;
+  color: $yi_lv;
+  text-align: center;
+  overflow: hidden;
+  &:hover {
+    border: darken($yi_lv, 10%) 1px solid;
+  }
+}
+
+
+.btn_huibian {
+  color: #000;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+  border: $biankuang;
+  a {
+    height: 100%;
+    width: 100%;
+    color: #000;
+    display: block;
+  }
+  &:hover {
+    background: darken($huise, 1%);
+  }
+  background: linear-gradient(#fff, $huise);
+}
+
+.btn_chengse {
+  @include btn($chengse, #fff);
+}
+.btn_hongse{
+  @include btn($hongse, #fff);
+}
+
+.btn_lvse{
+  @include btn($yi_lv, #fff);
+}
+.btn_huise{
+  @include btn($huise, #fff);
+}
+.btn_chengse_yi{
+  @include btn($yi_cheng, #fff);
+}
+
+@-webkit-keyframes rotate-animation {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate-animation {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes move-animation {
+  0% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+  25% {
+    -webkit-transform: translate(-64px, 0);
+    transform: translate(-64px, 0);
+  }
+  75% {
+    -webkit-transform: translate(32px, 0);
+    transform: translate(32px, 0);
+  }
+  100% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+@-webkit-keyframes move-animation {
+  0%{
+    -webkit-transform: translate(0,0);
+    transform: translate(0,0);
+  }
+}
+@keyframes move-animation {
+  0% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+  25% {
+    -webkit-transform: translate(-64px, 0);
+    transform: translate(-64px, 0);
+  }
+  75% {
+    -webkit-transform: translate(32px, 0);
+    transform: translate(32px, 0);
+  }
+  100% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+
+.circle-loader {
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin-top: 20%;
+  margin-left: 49%;
+  -webkit-transform-origin: 16px 16px;
+  transform-origin: 16px 16px;
+  -webkit-animation: rotate-animation 5s infinite;
+  animation: rotate-animation 5s infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+.circle-loader .circle {
+  -webkit-animation: move-animation 2.5s infinite;
+  animation: move-animation 2.5s infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+.circle-loader .circle-line {
+  width: 64px;
+  height: 24px;
+  position: absolute;
+  top: 4px;
+  left: 0;
+  -webkit-transform-origin: 4px 4px;
+  transform-origin: 4px 4px;
+}
+.circle-loader .circle-line:nth-child(0) {
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+.circle-loader .circle-line:nth-child(1) {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.circle-loader .circle-line:nth-child(2) {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.circle-loader .circle-line:nth-child(3) {
+  -webkit-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+.circle-loader .circle-line .circle:nth-child(1) {
+  width: 8px;
+  height: 8px;
+  top: 50%;
+  left: 50%;
+  margin-top: -4px;
+  margin-left: -4px;
+  border-radius: 4px;
+  -webkit-animation-delay: -0.3s;
+  animation-delay: -0.3s;
+}
+.circle-loader .circle-line .circle:nth-child(2) {
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin-top: -8px;
+  margin-left: -8px;
+  border-radius: 8px;
+  -webkit-animation-delay: -0.6s;
+  animation-delay: -0.6s;
+}
+.circle-loader .circle-line .circle:nth-child(3) {
+  width: 24px;
+  height: 24px;
+  top: 50%;
+  left: 50%;
+  margin-top: -12px;
+  margin-left: -12px;
+  border-radius: 12px;
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+.circle-loader .circle-blue {
+  background-color: #1f4e5a;
+}
+.circle-loader .circle-red {
+  background-color: #ff5955;
+}
+.circle-loader .circle-yellow {
+  background-color: #ffb265;
+}
+.circle-loader .circle-green {
+  background-color: #00a691;
+}

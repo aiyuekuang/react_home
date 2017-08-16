@@ -1,0 +1,23 @@
+//主要配置了antd得配置
+{
+  "presets": [
+    "stage-0",
+    "latest",
+    "react",
+    "stage-1",
+    "stage-2",
+    "stage-3"
+  ],
+  "plugins": [
+    "transform-decorators-legacy",
+    "transform-async-to-generator",
+    "transform-do-expressions",
+    "syntax-do-expressions",
+    ["import", { libraryName: "antd", style: true }]
+  ],
+  "env": {
+    "development": {
+      "presets": ["react-hmre"]
+    }
+  }
+}
