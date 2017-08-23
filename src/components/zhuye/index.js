@@ -27,7 +27,7 @@ class Index extends React.Component {
         this.props.act_index_tit(e.target.value);
     }
 
-    render() {
+    render(){
         return (
             <div className="zhuye">
                 <Head {...this.props}/>

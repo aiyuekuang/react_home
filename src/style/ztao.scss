@@ -20,3 +20,24 @@
   text-align: center;
   font-size: 24px;
 }
+.list{
+  @include lists(4,2%);
+  >div{
+    vertical-align: top;
+    font-size: 12px;
+    padding: 10px 0;
+    >div{
+      @include juzhong(90%);
+    }
+  }
+
+}
+.list_tit{
+  font-size: 14px;
+}
+.list_img{
+  text-align: center;
+  >img{
+    width: 100%;
+  }
+}

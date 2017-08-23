@@ -2,11 +2,18 @@ import {getData,postData} from "../utils/fetchData"
 import {hashHistory, browserHistory} from "react-router"
 import {  message,notification     } from 'antd';
 import NProgress from 'nprogress';
+import {val_empty} from 'esn'
 
 
 export function act_index_tit(data) {
     return {
         type: "INDEX_TIT",
+        data: data
+    };
+}
+export function act_list(data) {
+    return {
+        type: "LIST",
         data: data
     };
 }
@@ -20,14 +27,8 @@ export const get = (url = "", parm = {}, chenggong = function () {
         let response = await postData(url, parm);
         //await console.log(response.data)
         await function (response) {
-            if (response.data.code == 0) {
+            if (val_empty(response.data)) {
                 chenggong(response,dispatch, getState);
-            } else if (response.data.code == 170001) {
-                shans("yonghu")
-                message.error(response.data.errorMsg);
-                browserHistory.push({
-                    pathname: "/"
-                })
             } else {
                 erro()
                 notification['error']({

@@ -15,12 +15,27 @@ class Tui extends React.Component {
     }
 
     componentWillMount = ()=> {
+        this.props.get('/list',{r:'0.7153214477881407'},(data)=>{
+            this.props.act_list(data.data.msg.newlist)
+        })
     }
 
     render() {
+        let list = this.props.red_list.map((data,index)=>(
+            <div key={index}>
+                <div className="list_img"><img src={data.appthumb} alt=""/></div>
+                <div className="list_tit">{data.title}</div>
+                <div>{data.pubdate}</div>
+                <div>浏览量：{data.play}</div>
+            </div>))
         return (
-            <div className="neiye">
-                我是内页
+            <div>
+                <div className="neiye">
+                    <h1>我是内页，我也来个列表</h1>
+                </div>
+                <div className="list">
+                    {list}
+                </div>
             </div>
         )
     }
@@ -31,4 +46,4 @@ function bindact(dispatch) {
 }
 
 
-export default connect(mapstate,bindact)(Tui);
+export default connect(mapstate, bindact)(Tui);

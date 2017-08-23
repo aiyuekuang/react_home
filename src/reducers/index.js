@@ -21,8 +21,18 @@ export function red_head_tit (state = 'react_home', action) {
             return state
     }
 }
+export function red_list(state = [], action){
+    switch (action.type) {
+        case 'LIST':
+            return action.data;
+            break;
+        default:
+            return state
+    }
+}
 const rootReducer = combineReducers({
     red_index_tit,
-    red_head_tit
+    red_head_tit,
+    red_list
 })
 export default rootReducer

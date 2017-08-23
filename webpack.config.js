@@ -6,7 +6,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 //当前运行环境
 const pro = process.env.NODE_ENV === 'production';
-
+process.noDeprecation = true;
 var plugins = [
     new webpack.optimize.CommonsChunkPlugin({
         name: "vendor",//和上面配置的入口对应
@@ -40,7 +40,6 @@ if (pro) {
 
     )
 } else {
-    app.push('webpack-hot-middleware/client?path=http://localhost:3012/__webpack_hmr&reload=true&noInfo=false&quiet=false')
     plugins.push(
         new ExtractTextPlugin('styles.css'),
         new webpack.HotModuleReplacementPlugin()
@@ -117,6 +116,22 @@ module.exports = {
         },{
             test: /\.json$/,
             use: 'json-loader'
-        }],
-    }
+        }]
+
+    },
+    devServer: {//webpack-dev-server配置热更新以及跨域
+        historyApiFallback: true,//不跳转
+        noInfo: true,
+        inline: true,//实时刷新
+        port: '3012',
+        hot:true,
+        proxy: {
+            '/list': {
+                target: 'http://lol.qq.com/web201310/js/videodata/LOL_VIDEOLIST_IDX3.js',
+                pathRewrite: {'^/list': ''},
+                changeOrigin: true,
+                secure: false
+            }
+        }
+    },
 };
