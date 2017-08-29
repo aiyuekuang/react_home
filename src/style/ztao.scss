@@ -4,7 +4,7 @@
 @import "xiangmude";
 @import "nprogress.css";
 @import "anim.scss";
-//@import "hover/hover";
+@import "hover/hover";
 .zhuye{
   @include juzhong(500px);
   padding: 20px;
@@ -37,7 +37,8 @@
 }
 .list_img{
   text-align: center;
-  >img{
+  @extend .hvr-float;
+  img{
     width: 100%;
   }
 }
