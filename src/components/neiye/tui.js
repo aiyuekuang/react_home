@@ -21,7 +21,6 @@ class Tui extends React.Component {
     }
 
     render() {
-        console.log(this.props.red_list)
         let list = this.props.red_list.map((data,index)=>(
             <div key={index}>
                 <div className="list_img"><a href={data.url} target="_blank"><img src={data.appthumb} alt=""/></a></div>

@@ -1,5 +1,5 @@
 @charset "UTF-8";
-
+@import "normalize.css";
 @import "rest";
 @import "xiangmude";
 @import "nprogress.css";
@@ -37,8 +37,8 @@
 }
 .list_img{
   text-align: center;
-  @extend .hvr-float;
   img{
     width: 100%;
+    @extend .hvr-float;
   }
 }
