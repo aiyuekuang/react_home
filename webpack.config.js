@@ -14,10 +14,6 @@ var plugins = [
     })
 ]
 
-var app = [
-    'babel-polyfill',
-    './src/index'
-]
 
 
 if (pro) {
@@ -49,18 +45,19 @@ if (pro) {
 module.exports = {
     devtool: false,
     entry: {
-        app: app,
+        app:[
+            'babel-polyfill',
+            './src/index'
+        ],
         vendor: ['react','react-dom']
     },
     output: {
-        filename:pro ?  '[name].[hash].js':'[name].js',
+        filename:pro ?'[name].[hash].js':'[name].js',
         path: path.join(__dirname, 'build'),
         publicPath:  pro ? 'http://111.111.11.11/build/' : 'http://localhost:3012/build/',
         chunkFilename:pro ? '[name].[hash].js': '[name].js'
     },
-    // BASE_URL是全局的api接口访问地址
     plugins,
-    // alias是配置全局的路径入口名称，只要涉及到下面配置的文件路径，可以直接用定义的单个字母表示整个路径
     resolve: {
         extensions: ['.js', '.jsx', '.less', '.scss', '.css'],
         modules: [
@@ -70,6 +67,7 @@ module.exports = {
         alias: {
             "actions": path.resolve(__dirname, "src/actions"),
             "components": path.resolve(__dirname, "src/components"),
+            "containers": path.resolve(__dirname, "src/containers"),
             "reducers": path.resolve(__dirname, "src/reducers"),
             "utils": path.resolve(__dirname, "src/utils")
         }
@@ -77,10 +75,9 @@ module.exports = {
 
     module: {
         rules: [{
-            test: /\.(js|jsx)$/,
+            test: /\.js?$/,
             use: ['babel-loader'],
-            exclude: /node_modules/,
-            include: path.join(__dirname, 'src')
+            exclude: /(node_modules)/
         }, {
             test: /\.scss/,
             use: ExtractTextPlugin.extract({

@@ -1,5 +1,4 @@
 import {getData,postData} from "../utils/fetchData"
-import {hashHistory, browserHistory} from "react-router"
 import {  message,notification     } from 'antd';
 import NProgress from 'nprogress';
 import {val_empty} from 'esn'

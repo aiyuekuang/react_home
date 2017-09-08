@@ -1,14 +1,11 @@
 # react_home
-这是一个react的脚手架项目，其中包含着当前最新得脚手架配置方式，技术技术栈包括react+redux+antd+webpack3+sass/less+axios+immutable+proxy，我会长期，并定期维护这个脚手架，将当下react生态圈最新技术运用进去,适用于新手或者关注进阶的朋友学习参考。（广大撸友觉得能用上的，也不要吝啬自己的star哦）  
+这是一个react的脚手架项目，其中包含着当前最新得脚手架配置方式，技术技术栈包括react+redux+antd+react+router4++webpack3+sass/less+axios+immutable+proxy，我会长期，并定期维护这个脚手架，将当下react生态圈最新技术运用进去,适用于新手或者关注进阶的朋友学习参考。（广大撸友觉得能用上的，也不要吝啬自己的star哦）  
 
 # 更新日志  
-**2017.08.23** [日志地址](https://github.com/aiyuekuang/react_home/blob/master/doc/doc.MD)  
+**2017.09.08 ** [日志地址](https://github.com/aiyuekuang/react_home/blob/master/doc/doc.MD)  
 
-1. express服务改为更为简洁得webpack-dev-server，并且加入了跨域配置，可直接前后端分离开发
-2. 新增了列表页得跨域接口调用，供新手学习，数据经过redux得整个流程，显示在view中
-3. 调用我封装得一个简单得数据请求函数，大家可以看下代码，自行使用
-4. 在action中示范使用esn得一个小函数  这样： import {val_empty} from 'esn'
-5. 精简了一些项目开发得配置
+1. 将react-router3升级为4，无痛切换，因为现在v4得版本已经趋于稳定，故对于项目而言，现在升级已经是一个合适得时机了。
+2. 精简了一些不必要得配置
 
 ![列表图](https://github.com/aiyuekuang/react_home/blob/master/doc/img/react_home.png?raw=true)
 

@@ -7,9 +7,10 @@ import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
 import * as index_act from "../../actions/index";
 import {mapstate} from "../../reducers/shuju"
-import {hashHistory, browserHistory} from "react-router"
 import Head from '../public/head'
-
+import {
+    Link
+} from 'react-router-dom';
 
 class Index extends React.Component {
     constructor(arg) {
@@ -19,9 +20,6 @@ class Index extends React.Component {
     componentWillMount = ()=> {
     }
     dianji=()=>{
-        browserHistory.push({
-            pathname:'/tui'
-        })
     }
     gaizi=(e)=>{
         this.props.act_index_tit(e.target.value);
@@ -38,9 +36,9 @@ class Index extends React.Component {
                     <Alert message={this.props.red_index_tit} type="success" />
                 </div>
                 <div>
-                    <Button type="primary" onClick={this.dianji.bind(this)}>
+                    <Link to="/tui">
                         跳转到内页
-                    </Button>
+                    </Link >
                 </div>
             </div>
         )

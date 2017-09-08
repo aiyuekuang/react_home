@@ -9,7 +9,7 @@ import * as index_act from "../../actions/index";
 import {mapstate} from "../../reducers/shuju"
 
 
-class Tui extends React.Component {
+class Tui extends React.PureComponent {
     constructor(arg) {
         super(arg);
     }
