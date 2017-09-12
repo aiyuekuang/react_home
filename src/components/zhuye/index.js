@@ -2,11 +2,11 @@
  * Created by zengtao on 2017/5/19.
  */
 import React from 'react';
-import {Button,Input,Alert } from 'antd';
-import {bindActionCreators} from "redux"
-import {connect} from "react-redux"
+import { Button, Input, Alert } from 'antd';
+import { bindActionCreators } from "redux"
+import { connect } from "react-redux"
 import * as index_act from "../../actions/index";
-import {mapstate} from "../../reducers/shuju"
+import { mapstate } from "../../reducers/shuju"
 import Head from '../public/head'
 import {
     Link
@@ -15,23 +15,23 @@ import {
 class Index extends React.Component {
     constructor(arg) {
         super(arg);
-        
+
     }
 
-    componentWillMount = ()=> {
+    componentWillMount = () => {
     }
-    dianji=()=>{
+    dianji = () => {
     }
-    gaizi=(e)=>{
+    gaizi = (e) => {
         this.props.act_index_tit(e.target.value);
     }
 
-    render(){
+    render() {
         return (
             <div className="zhuye">
-                <Head {...this.props}/>
+                <Head {...this.props} />
                 <div>
-                    <Input type="text" onChange={this.gaizi.bind(this)} placeholder="填入试试下面得字会变"/>
+                    <Input type="text" onChange={this.gaizi.bind(this)} placeholder="填入试试下面得字会变" />
                 </div>
                 <div>
                     <Alert message={this.props.red_index_tit} type="success" />
@@ -51,4 +51,4 @@ function bindact(dispatch) {
 }
 
 
-export default connect(mapstate,bindact)(Index);
+export default connect(mapstate, bindact)(Index);
