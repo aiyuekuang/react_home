@@ -15,6 +15,7 @@ import {
 class Index extends React.Component {
     constructor(arg) {
         super(arg);
+        
     }
 
     componentWillMount = ()=> {
