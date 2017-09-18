@@ -38,7 +38,12 @@ if (pro) {
 } else {
     plugins.push(
         new ExtractTextPlugin('styles.css'),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+            },
+        })
     )
 }
 
