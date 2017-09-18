@@ -32,18 +32,19 @@ if (pro) {
         }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, '/src/index.html') // Load a custom template
+        }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+            }
         })
 
     )
 } else {
     plugins.push(
         new ExtractTextPlugin('styles.css'),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-            },
-        })
+        new webpack.HotModuleReplacementPlugin()
+
     )
 }
 
