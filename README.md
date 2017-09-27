@@ -4,7 +4,7 @@
 # 更新日志  
 **2017.09.27** [日志地址](https://github.com/aiyuekuang/react_home/blob/master/doc/doc.MD)  
 
-1. 升级reactv15至v16
+1. 升级react v15至v16
 
 ![列表图](https://github.com/aiyuekuang/react_home/blob/master/doc/img/react_home.png?raw=true)
 
