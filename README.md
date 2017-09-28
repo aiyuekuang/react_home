@@ -29,7 +29,7 @@
     访问地址：http://localhost:3012
     
 # 打包上线
-* 将webpack.config.js中的publicPath的http://111.111.11.11/build/改成你线上的地址，比如http://129.0.0.111之类，然后再执行npm run build
+* 将webpack.config.js中的publicPath的 http://111.111.11.11/build/ 改成你线上的地址，比如 http://129.0.0.111 之类，然后再执行npm run build
 * 打包后直接将build文件夹提交至你们项目得根目录中
 * 命令并且呵斥你们得后端人员，将404指向build/index.html，这样基本就可以愉快得查看了
 * 如果在上线后首屏调用速度较慢，这样得情况得话，可以鞭挞后端人员，开启服务器得gzip压缩功能将js压缩一下，压缩后大小基本只有原来得三分之一，这个很实用
