@@ -19,7 +19,7 @@
 8. 本项目没有尝试服务器端渲染，笔者认为，spa最大得特色就是使得前后端得开发模式发生了变化，让整个开发流程变得舒服，前端人员开发出来得代码可以随意得部署在任何地方，而不需要考虑服务器上得问题，而首屏加载过慢得问题可以通过gzip来解决，我想这能满足大多数人得需求，当然了，项目有特殊性，还是有很多项目需要用到服务端渲染，这可以加强研究
 
 # 注意
-  如果在build或者start的时候出现node-sass之类的报错，可以使用 npm rebuild node-sass来处理下，再build或start，有了解的同学可以issues告诉我。
+  如果在build或者start的时候出现node-sass之类的报错，可以使用 npm rebuild node-sass来处理下，再build或start，有不了解的同学可以issues告诉我。
 
 # 使用方法：
     安装模块：npm install  
