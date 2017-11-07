@@ -7,6 +7,7 @@ import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
 import * as index_act from "../../actions/index";
 import {mapstate} from "../../reducers/shuju"
+import {qus} from 'esn'
 
 
 class Tui extends React.PureComponent {
@@ -32,6 +33,7 @@ class Tui extends React.PureComponent {
             <div>
                 <div className="neiye">
                     <h1>我是内页，我也来个列表</h1>
+                    <h3 className="hongzi">{qus('canshu')}</h3>
                 </div>
                 <div className="list">
                     {list}

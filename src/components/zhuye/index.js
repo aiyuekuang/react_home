@@ -38,7 +38,7 @@ class Index extends React.Component {
         return (
             <div className="zhuye">
                 <Head {...this.props} />
-                <div>
+                <div className="index_caidan">
                     <Link to="/neiye_1">内页1</Link> <Link to="/neiye_2">内页2</Link>
                 </div>
                 <div>
