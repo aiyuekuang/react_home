@@ -79,8 +79,8 @@ module.exports = {
     },
     output: {
         filename: pro ? '[name].[hash].js' : '[name].js',
-        path: path.join(__dirname, 'dist'),
-        publicPath: pro ? './' : `http://localhost:${dev_port}/dist/`
+        path: path.join(__dirname, 'build'),
+        publicPath: pro ? './' : `http://localhost:${dev_port}/build/`
     },
     devtool: false,
     module: {
