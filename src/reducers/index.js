@@ -35,4 +35,5 @@ const rootReducer = combineReducers({
     red_head_tit,
     red_list
 })
+
 export default rootReducer

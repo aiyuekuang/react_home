@@ -1,69 +1,68 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require("webpack");
+var pro = process.env.NODE_ENV == "production" ? true : false
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+//开发环境端口号
+var dev_port = "3012"
+
+//不同环境加载不同的插件
 
 
-//当前运行环境
-const pro = process.env.NODE_ENV === 'production';
-process.noDeprecation = true;
-var plugins = [
-    new webpack.optimize.CommonsChunkPlugin({
-        name: "vendor",//和上面配置的入口对应
-        minChunks:2,
-    })
-]
-
-
-
+let plg = [];
 if (pro) {
-    plugins.push(
-        new ExtractTextPlugin('styles.[contenthash:6].css'),
-        new webpack.optimize.UglifyJsPlugin({
-            mangle: {
-                except: ['$super', '$', 'exports', 'require', 'module', '_']
-            },
-            compress: {
-                warnings: false
-            },
-            output: {
-                comments: false,
-            }
-        }),
+    plg = [
         new HtmlWebpackPlugin({
             template: path.join(__dirname, '/src/index.html') // Load a custom template
-        }),
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-            }
+        }), new MiniCssExtractPlugin({
+            filename: "[name].[hash].css",
+            chunkFilename: "[id].css"
         })
+    ]
 
-    )
+
 } else {
-    plugins.push(
-        new ExtractTextPlugin('styles.css'),
-        new webpack.HotModuleReplacementPlugin()
-
-    )
+    plg = [
+        new webpack.HotModuleReplacementPlugin(),
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: "[id].css"
+        })
+    ]
 }
 
+
 module.exports = {
-    devtool: false,
     entry: {
-        app:[
-            'babel-polyfill',
-            './src/index'
-        ],
-        vendor: ['react','react-dom']
+        index: ['babel-polyfill', './src/index.js']
     },
-    output: {
-        filename:pro ?'[name].[hash].js':'[name].js',
-        path: path.join(__dirname, 'build'),
-        publicPath:  pro ? 'http://111.111.11.11/build/' : 'http://localhost:3012/build/',
-        chunkFilename:pro ? '[name].[hash].js': '[name].js'
+    optimization: {
+        splitChunks: {
+            chunks: "initial",         // 必须三选一： "initial" | "all"(默认就是all) | "async"
+            minSize: 0,                // 最小尺寸，默认0
+            minChunks: 1,              // 最小 chunk ，默认1
+            maxAsyncRequests: 1,       // 最大异步请求数， 默认1
+            maxInitialRequests: 1,    // 最大初始化请求书，默认1
+            name: () => {
+            },              // 名称，此选项课接收 function
+            cacheGroups: {                 // 这里开始设置缓存的 chunks
+                priority: "0",                // 缓存组优先级 false | object |
+                vendor: {                   // key 为entry中定义的 入口名称
+                    chunks: "initial",        // 必须三选一： "initial" | "all" | "async"(默认就是异步)
+                    test: /react|lodash/,     // 正则规则验证，如果符合就提取 chunk
+                    name: "vendor",           // 要缓存的 分隔出来的 chunk 名称
+                    minSize: 0,
+                    minChunks: 1,
+                    enforce: true,
+                    maxAsyncRequests: 1,       // 最大异步请求数， 默认1
+                    maxInitialRequests: 1,    // 最大初始化请求书，默认1
+                    reuseExistingChunk: true   // 可设置是否重用该chunk（查看源码没有发现默认值）
+                }
+            }
+        }
     },
-    plugins,
+    plugins:plg,
     resolve: {
         extensions: ['.js', '.jsx', '.less', '.scss', '.css'],
         modules: [
@@ -78,7 +77,12 @@ module.exports = {
             "utils": path.resolve(__dirname, "src/utils")
         }
     },
-
+    output: {
+        filename: pro ? '[name].[hash].js' : '[name].js',
+        path: path.join(__dirname, 'dist'),
+        publicPath: pro ? './' : `http://localhost:${dev_port}/dist/`
+    },
+    devtool: false,
     module: {
         rules: [{
             test: /\.js?$/,
@@ -86,48 +90,43 @@ module.exports = {
             exclude: /(node_modules)/
         }, {
             test: /\.scss/,
-            use: ExtractTextPlugin.extract({
-                use: [{
-                    loader: 'css-loader',
-                    options:{
-                        minimize: true //css压缩
-                    }
-                }, "sass-loader"]
-            })
+            use: [MiniCssExtractPlugin.loader, {
+                loader: 'css-loader?importLoaders=1',
+                options: {
+                    minimize: true //css压缩
+                }
+            }, "sass-loader"]
         }, {
             test: /\.(less|css)$/,
-            use: ExtractTextPlugin.extract({
-                use: [{
-                        loader: 'css-loader',
-                        options:{
-                            minimize: true //css压缩
-                        }
-                    }, "less-loader"]
-            })
+            use: [MiniCssExtractPlugin.loader, {
+                loader: 'css-loader?importLoaders=1',
+                options: {
+                    minimize: true //css压缩
+                }
+            }, {loader: 'less-loader', options: {javascriptEnabled: true}}]
         }, {
             test: /\.(png|jpg|gif|md)$/,
             use: ['file-loader?limit=10000&name=[md5:hash:base64:10].[ext]']
         }, {
             test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
             use: ['url-loader?limit=10000&mimetype=images/svg+xml']
-        },{
+        }, {
             test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: "url-loader?limit=10000&mimetype=application/font-woff"
         }, {
             test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: "file-loader"
-        },{
+        }, {
             test: /\.json$/,
-            use: 'json-loader'
+            use: "json-loader"
         }]
-
     },
     devServer: {//webpack-dev-server配置热更新以及跨域
         historyApiFallback: true,//不跳转
         noInfo: true,
         inline: true,//实时刷新
-        port: '3012',
-        hot:true,
+        port: dev_port,
+        hot: true,
         proxy: {
             '/list': {
                 target: 'http://lol.qq.com/web201310/js/videodata/LOL_VIDEOLIST_IDX3.js',
@@ -136,5 +135,5 @@ module.exports = {
                 secure: false
             }
         }
-    },
+    }
 };

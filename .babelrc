@@ -6,10 +6,6 @@
     "react"
   ],
   "plugins": [
-    "transform-decorators-legacy",
-    "transform-async-to-generator",
-    "transform-do-expressions",
-    "syntax-do-expressions",
-    ["import", { libraryName: "antd", style: true }]
-  ]
+      ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": true }] // `style: true` 会加载 less 文件
+    ]
 }
