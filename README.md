@@ -6,7 +6,7 @@
 1. 将webpack3更新至v4.6，这个版本是稳定的
 2. 还是原来的配方，还是原来的味道，加入了相对简单一点的config配置（这么长时间没更新，不是懒，是实在没的更）
 
-![列表图](https://github.com/aiyuekuang/react_home/blob/master/doc/img/react_home.png?raw=true)
+![列表图](https://github.com/aiyuekuang/react_home/blob/master/doc/img/react_homes.png?raw=true)
 
 # 功能与特色
 1. 项目集成了当前react中最好得ui轮子antd，不解释，已配置好，直接使用
