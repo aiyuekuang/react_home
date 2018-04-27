@@ -1,5 +1,5 @@
 # react_home
-这是一个react的脚手架项目，其中包含着当前最新得脚手架配置方式，技术技术栈包括react16+redux+antd+react-router4++webpack3+sass/less+axios+immutable+proxy，我会长期，并定期维护这个脚手架，将当下react生态圈最新技术运用进去,适用于新手或者关注进阶的朋友学习参考。（广大撸友觉得能用上的，也不要吝啬自己的star哦）  
+这是一个react的脚手架项目，其中包含着当前最新得脚手架配置方式，技术技术栈包括react16+redux+antd+react-router4++webpack4+sass/less+axios+immutable+proxy，我会长期，并定期维护这个脚手架，将当下react生态圈最新技术运用进去,适用于新手或者关注进阶的朋友学习参考。（广大撸友觉得能用上的，也不要吝啬自己的star哦）  
 
 # 更新日志  
 **2018.04.27** [日志地址](https://github.com/aiyuekuang/react_home/blob/master/doc/doc.MD)  
@@ -31,7 +31,7 @@
     访问地址：http://localhost:3012
     
 # 打包上线
-* 将webpack.config.js中的publicPath的 http://111.111.11.11/build/ 改成你线上的地址，比如 http://129.0.0.111 之类，然后再执行npm run build
+* 将webpack.config.js中的publicPath的 ./ 改成你线上的绝对地址，比如 http://129.0.0.111 之类，然后再执行npm run build
 * 打包后直接将build文件夹提交至你们项目得根目录中
 * 命令并且呵斥你们得后端人员，将404指向build/index.html，这样基本就可以愉快得查看了
 * 如果在上线后首屏调用速度较慢，这样得情况得话，可以鞭挞后端人员，开启服务器得gzip压缩功能将js压缩一下，压缩后大小基本只有原来得三分之一，这个很实用
