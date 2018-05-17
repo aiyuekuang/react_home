@@ -2,7 +2,8 @@
 这是一个react的脚手架项目，其中包含着当前最新得脚手架配置方式，技术技术栈包括react16+redux+antd+react-router4++webpack4+sass/less+axios+immutable+proxy，我会长期，并定期维护这个脚手架，将当下react生态圈最新技术运用进去,适用于新手或者关注进阶的朋友学习参考。（广大撸友觉得能用上的，也不要吝啬自己的star哦） 
  
 # 脚手架工具
-地址：https://github.com/aiyuekuang/ztao.git，具体用法可直接看README.md
+地址：https://github.com/aiyuekuang/ztao.git
+具体用法可直接看README.md
 
 # 更新日志  
 **2018.04.27** [日志地址](https://github.com/aiyuekuang/react_home/blob/master/doc/doc.MD)  
