@@ -17,7 +17,7 @@
   "author": "ztao",
   "license": "MIT",
   "devDependencies": {
-    "antd": "^3.4.3",
+    "antd": "2.13.8",
     "axios": "^0.18.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
