@@ -13,6 +13,7 @@ import {
 } from 'react-router-dom';
 import history from '../public/history';
 import {cuns} from 'esn'
+import tu from "../../images/y.jpg"
 
 class Index extends React.Component {
     constructor(arg) {
@@ -41,6 +42,7 @@ class Index extends React.Component {
                 <div className="index_caidan">
                     <Link to="/neiye_1">内页1</Link> <Link to="/neiye_2">内页2</Link>
                 </div>
+                <img src={tu} alt=""/>
                 <div>
                     {this.props.children}
                 </div>

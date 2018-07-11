@@ -6,10 +6,11 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 //开发环境端口号
 var dev_port = "3012"
+//更改本地测试环境的地址，可以写localhost，或者写你本地的ip方便手机测试
+var url = "localhost"
+
 
 //不同环境加载不同的插件
-
-
 let plg = [];
 if (pro) {
     plg = [
@@ -80,7 +81,7 @@ module.exports = {
     output: {
         filename: pro ? '[name].[hash].js' : '[name].js',
         path: path.join(__dirname, 'build'),
-        publicPath: pro ? './' : `http://localhost:${dev_port}/build/`
+        publicPath: pro ? './' : `http://${url}:${dev_port}/build/`
     },
     devtool: false,
     module: {
@@ -125,6 +126,7 @@ module.exports = {
         historyApiFallback: true,//不跳转
         noInfo: true,
         inline: true,//实时刷新
+        host:url,
         port: dev_port,
         hot: true,
         proxy: {
