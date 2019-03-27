@@ -1,0 +1,136 @@
+
+/*全局css样式*/
+* {
+  margin: 0;
+  padding: 0;
+}
+a{
+  text-decoration:none ;
+}
+
+/*滚动条垂直方向的宽度*/
+//::-webkit-scrollbar-track-piece {
+//  width: 10px;
+//  background-color: #4e4e5a;
+//}
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar {
+  width: 10px;
+  height:12px;
+}
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+  width: 5px;
+  height: 50px;
+  background: rgb(228, 228, 228);
+  cursor: pointer;
+  border-radius: 8px;
+  &:hover {
+    background: #ababab;
+    cursor: pointer;
+    opacity:1;
+    width: 10px;
+  }
+}
+/*定义最上方和最下方的按钮*/
+::-webkit-scrollbar-button{
+  //background-color: #fff;
+}
+.gybxs {
+  display: none!important;
+}
+
+@mixin hengpai($font:14px,$zhong:middle,$div:div){
+  font-size: 0;
+  >#{$div}{
+    font-size:$font;
+    display: inline-block;
+    vertical-align: $zhong;
+  }
+}
+
+//flex-start上对齐
+@mixin hp($al:center,$ju:space-between){
+  display: flex;
+  flex-flow:row wrap;
+  align-content: $al;
+  align-items: $al;
+  justify-content: $ju;
+}
+
+//自动到
+@mixin hp2($min_width:auto,$align:center){
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  align-items:$align;
+  >div{
+    min-width: $min_width;
+  }
+}
+
+%chaochu {
+  display:block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin hh($value,$hang:1,$hidden:hidden) {
+  height: $value;
+  line-height: $value / $hang;
+  overflow: $hidden;
+}
+@mixin juzhong($width){
+  width: $width;
+  margin: 0 auto;
+}
+
+.mask{
+  background: #000;
+  opacity: 0.7;
+  position: fixed;
+  width: 100%;
+  height:100%;
+  left:0;
+  top:0;
+  z-index: 998;
+}
+
+@keyframes xianshi
+{
+  from {opacity: 0;transform: rotateY(0deg)}
+  to {opacity: 0.95;transform: rotateY(360deg)}
+}
+@mixin min400{
+  @media (max-width:400px){
+    @content;
+  }
+}
+@mixin p500{
+  @media (min-width:400px) and (max-width:500px){
+    @content;
+  }
+}
+@mixin p1000{
+  @media (min-width:500px) and (max-width: 1000px) {
+    @content;
+  }
+}
+@mixin p1500{
+  @media (min-width:1000px) and (max-width:1500px) {
+    @content;
+  }
+}
+
+@mixin p2000{
+  @media (min-width:1500px) and (max-width:2000px) {
+    @content;
+  }
+}
+
+@mixin max1920{
+  @media (min-width:1921px){
+    @content;
+  }
+}

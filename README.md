@@ -5,9 +5,11 @@
 地址： [https://github.com/aiyuekuang/ztao.git](https://github.com/aiyuekuang/ztao.git)（具体用法可直接看该工具的README.md）
 
 # 更新日志  
-**2018.04.27** [日志地址](https://github.com/aiyuekuang/react_home/blob/master/doc/doc.MD)  
-1. 将webpack3更新至v4.6，这个版本是稳定的
-2. 还是原来的配方，还是原来的味道，加入了相对简单一点的config配置（这么长时间没更新，不是懒，是实在没的更）
+**2019.03.27** [日志地址](https://github.com/aiyuekuang/react_home/blob/master/doc/doc.MD)  
+1.将所有的依赖更新至更新日期的最新，如：react-router5，webpack4.7等
+2.将项目脚手架与业务模块分层，业务场景如：前端架构使用该脚手架搭建项目，配置前后端的联调环境，配置web程序的上线与维护，业务开发人员只需在src/work文件夹当中进行业务的开发
+3.对webpack.config的编写由es5，升级为es6的语法，爽
+4.项目引入多线程和dll模式打包，速度更快
 
 ![列表图](https://github.com/aiyuekuang/react_home/blob/master/doc/img/react_homes.png?raw=true)
 
@@ -20,6 +22,7 @@
 6. immutable我觉得是如今和reducers配合最好得数据处理库，没有之一，新手朋友百度学习吧
 7. 本项目引入了[esn](https://github.com/aiyuekuang/esn.git)得库，一个很小巧得数据操作库，在开发过程中，里面得很多功能都能用到，2个字方便
 8. 本项目没有尝试服务器端渲染，笔者认为，spa最大得特色就是使得前后端得开发模式发生了变化，让整个开发流程变得舒服，前端人员开发出来得代码可以随意得部署在任何地方，而不需要考虑服务器上得问题，而首屏加载过慢得问题可以通过gzip来解决，我想这能满足大多数人得需求，当然了，项目有特殊性，还是有很多项目需要用到服务端渲染，这可以加强研究
+9. 本项目有简单的脚手架工具[ztao-cli](https://github.com/aiyuekuang/ztao.git)，可以直接只用，更加方便快捷
 
 # 注意
   如果在build或者start的时候出现node-sass之类的报错，可以使用 npm rebuild node-sass来处理下，再build或start，有不了解的同学可以issues告诉我。
@@ -34,7 +37,7 @@
     访问地址：http://localhost:3012
     
 # 打包上线
-* 将webpack.config.js中的publicPath的 ./ 改成你线上的绝对地址，比如 http://129.0.0.111 之类，然后再执行npm run build
+* 在项目开始之前，在config文件夹中，配置你的项目的各种环境，这些环境都是项目在开发和上线时都需要用到的
 * 打包后直接将build文件夹提交至你们项目得根目录中
 * 命令并且呵斥你们得后端人员，将404指向build/index.html，这样基本就可以愉快得查看了
 * 如果在上线后首屏调用速度较慢，这样得情况得话，可以鞭挞后端人员，开启服务器得gzip压缩功能将js压缩一下，压缩后大小基本只有原来得三分之一，这个很实用

@@ -1,0 +1,276 @@
+
+$lanse: #1890ff;
+$chengse: rgba(239, 141, 70, 1);
+$huise: #e7e7e7;
+$huizi: #666666;
+$huibg:#F7F9FA;
+$xiaohuizi: #999999;
+$kuan: 1160px;
+$biankuang: 1px solid $huise;
+$biankuang_lan: 2px solid $lanse;
+$landan:#7ac7ef;
+$hongse:#ff0000;
+$lvse:#23b89c;
+$danlan:#f0f5ff;
+
+$lushuibg:#f8f8f8;
+
+$biaotizi:17px;
+
+
+//表单宽度
+$form_width:500px;
+
+//边框阴影
+$boxShadow:1px 1px 10px rgba(204,204,204,0.5);
+$box_s: 1px 1px 10px rgba(204,204,204,0.5);
+
+/*
+ * header头部边框阴影 <edit：林家俊>
+ */
+@mixin header_box_shadow{
+  box-shadow:0px 5px 15px rgba(0,0,0,0.06);
+  background:#fff;
+  padding: 24px;
+}
+/*
+ * 盒子边框阴影 <edit：林家俊>
+ */
+@mixin div_box_shadow{
+  box-shadow:0px 0px 15px rgba(0,0,0,0.06);
+  margin:24px;
+  padding:24px;
+  border-radius:8px;
+  background-color: #fff;
+}
+
+a{
+  text-decoration:none ;
+}
+.baizi{
+  color: #fff;
+}
+.hongzi{
+  color: $hongse!important;
+}
+.lvzi{
+  color: $lvse!important;
+}
+.chengse{
+  color:$chengse;
+}
+.lanzi{
+   color: $lanse;
+   cursor: pointer;
+ }
+.huizi{
+  color: $huizi;
+}
+.zi12{
+  font-size: 12px;
+}
+.heizi{
+  color: #000;
+}
+.zhuye_hui{
+  background: $huibg;
+}
+//常用的列数据的标题样式，比如：个人中心申请角色列表、安全设置的标题
+%list_tit{
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(0,0,0,.85);
+  padding: 16px 1%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-bottom: $biankuang;
+  width: 100%;
+}
+
+.spinner_ztao {
+  display: inline-block;
+  vertical-align: middle;
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+  border-radius: 100%;
+  -webkit-animation: scaleout 1.0s infinite ease-in-out;
+  animation: scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes scaleout {
+  0% { -webkit-transform: scale(0.0) }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes scaleout {
+  0% {
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 100% {
+      transform: scale(1.0);
+      -webkit-transform: scale(1.0);
+      opacity: 0;
+    }
+}
+
+
+
+@-webkit-keyframes rotate-animation {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate-animation {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes move-animation {
+  0% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+  25% {
+    -webkit-transform: translate(-64px, 0);
+    transform: translate(-64px, 0);
+  }
+  75% {
+    -webkit-transform: translate(32px, 0);
+    transform: translate(32px, 0);
+  }
+  100% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+@-webkit-keyframes move-animation {
+  0%{
+    -webkit-transform: translate(0,0);
+    transform: translate(0,0);
+  }
+}
+@keyframes move-animation {
+  0% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+  25% {
+    -webkit-transform: translate(-64px, 0);
+    transform: translate(-64px, 0);
+  }
+  75% {
+    -webkit-transform: translate(32px, 0);
+    transform: translate(32px, 0);
+  }
+  100% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+
+.circle-loader {
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin-top: 20%;
+  margin-left: 49%;
+  -webkit-transform-origin: 16px 16px;
+  transform-origin: 16px 16px;
+  -webkit-animation: rotate-animation 5s infinite;
+  animation: rotate-animation 5s infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+.circle-loader .circle {
+  -webkit-animation: move-animation 2.5s infinite;
+  animation: move-animation 2.5s infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+.circle-loader .circle-line {
+  width: 64px;
+  height: 24px;
+  position: absolute;
+  top: 4px;
+  left: 0;
+  -webkit-transform-origin: 4px 4px;
+  transform-origin: 4px 4px;
+}
+.circle-loader .circle-line:nth-child(0) {
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+.circle-loader .circle-line:nth-child(1) {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.circle-loader .circle-line:nth-child(2) {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.circle-loader .circle-line:nth-child(3) {
+  -webkit-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+.circle-loader .circle-line .circle:nth-child(1) {
+  width: 8px;
+  height: 8px;
+  top: 50%;
+  left: 50%;
+  margin-top: -4px;
+  margin-left: -4px;
+  border-radius: 4px;
+  -webkit-animation-delay: -0.3s;
+  animation-delay: -0.3s;
+}
+.circle-loader .circle-line .circle:nth-child(2) {
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin-top: -8px;
+  margin-left: -8px;
+  border-radius: 8px;
+  -webkit-animation-delay: -0.6s;
+  animation-delay: -0.6s;
+}
+.circle-loader .circle-line .circle:nth-child(3) {
+  width: 24px;
+  height: 24px;
+  top: 50%;
+  left: 50%;
+  margin-top: -12px;
+  margin-left: -12px;
+  border-radius: 12px;
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+.circle-loader .circle-blue {
+  background-color: #1f4e5a;
+}
+.circle-loader .circle-red {
+  background-color: #ff5955;
+}
+.circle-loader .circle-yellow {
+  background-color: #ffb265;
+}
+.circle-loader .circle-green {
+  background-color: #00a691;
+}

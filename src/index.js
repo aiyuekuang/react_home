@@ -1,12 +1,17 @@
-import { Provider } from 'react-redux';
+import {Provider} from 'react-redux';
 import ReactDOM from 'react-dom';
 import React from 'react';
 import App from './routes'
 import store from './store';
-import './style/ztao.scss'
+import zhCN from 'antd/lib/locale-provider/zh_CN';
+import {LocaleProvider} from 'antd';
+import "nprogress/nprogress.css";
+import "anup/dist/anup.css";
 ReactDOM.render(
-    <Provider store={store}>
+    <LocaleProvider locale={zhCN}>
+        <Provider store={store}>
             <App/>
-    </Provider>,
+        </Provider>
+    </LocaleProvider>,
     document.getElementById('root')
 );

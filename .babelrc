@@ -1,11 +1,31 @@
-//主要配置了antd得配置
 {
   "presets": [
-    "es2015",
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": [
+            ">1%",
+            "last 3 versions"
+          ]
+        }
+      }
+    ],
     "stage-0",
+    "latest",
     "react"
   ],
   "plugins": [
-      ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": true }] // `style: true` 会加载 less 文件
+    "transform-runtime",
+    "syntax-dynamic-import",
+    "transform-class-properties",
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "libraryDirectory": "es",
+        "style": true
+      }
     ]
+  ]
 }

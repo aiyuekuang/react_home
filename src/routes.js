@@ -1,41 +1,68 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {
     Router,
     Route,
-    Switch
+    Switch,
+    Redirect
 } from 'react-router-dom';
-
-import Index from './components/zhuye/index'
-import Tui from './components/liebiao/tui'
-import Neiye1 from './components/neiye/neiye1'
-import Neiye2 from './components/neiye/neiye2'
-import history from './components/public/history';
-
-
+import {bindActionCreators} from "redux"
+import {connect} from "react-redux"
+import * as index_act from "@actions/index";
+import {mapstate} from "@reducers/shuju"
+import history from './work/components/public/history';
+import {url_add} from "@config"
+import {url_data} from "./work/router/data"
 
 class App extends React.Component {
     constructor(props, context) {
         super(props, context);
     }
+
     render() {
+        //auth_arr就是后台维护的一个权限的数组，[1]里面的1，就是有权限的访问的1的界面，这里的权限控制模型，可以自行编写
+        const {auth_arr} = this.props;
+        let list = (url_data) => url_data.map((data, i) => {
+            if (data.children && data.children.length > 0) {
+                return (
+                    <data.comp key={i}>
+                            {list(data.children)}
+                    </data.comp>
+                )
+            }
+            if (data.auth) {
+                if (auth_arr.find((data_arr) => data_arr == data.auth)) {
+                    return (<Route key={i} exact path={url_add + data.url} component={data.comp}/>)
+                } else {
+                    return null
+                }
+            } else {
+                return (<Route key={i} exact path={url_add + data.url} component={data.comp}/>)
+            }
+
+        })
+
         return (
-            <Router  history={history}>
-                <div>
+            <Router
+                history={history}
+            >
+                <Fragment>
                     {/**
                      * 这里可以公共的样式,比如 头部, 尾部, 等.
                      */
                     }
                     <Switch>
-                        <Route path="/tui" component={Tui}/>
-                        <Index>
-                            <Route exact path="/" component={Neiye1}/>
-                            <Route path="/neiye_1" component={Neiye1}/>
-                            <Route path="/neiye_2" component={Neiye2}/>
-                        </Index>
+                        {list(url_data)}
                     </Switch>
-                </div>
+                </Fragment>
             </Router>
         );
     }
 }
-export default App;
+
+
+function bindact(dispatch) {
+    return bindActionCreators(index_act, dispatch)
+}
+
+
+export default connect(mapstate, bindact)(App);
