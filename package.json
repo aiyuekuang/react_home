@@ -7,6 +7,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server  --open --color --hot --mode development --inline   --profile --env.dev=development",
     "build": "cross-env NODE_ENV=production webpack --progress --profile  --mode production --env.dev=production",
+    "env": "cross-env NODE_ENV=env webpack --progress --profile  --mode production --env.dev=production",
     "dll": "webpack  --mode production  --profile --inline --config webpack.dll.config.js "
   },
   "author": "ztao",
@@ -20,7 +21,7 @@
     "esn": "^1.0.6",
     "mockjs": "^1.0.1-beta3",
     "nprogress": "^0.2.0",
-    "react": "^16.8.4",
+    "react": "^16.8.6",
     "react-dom": "^16.4.0",
     "react-loadable": "^5.4.0",
     "react-native-md5": "^1.0.0",

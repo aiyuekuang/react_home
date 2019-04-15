@@ -1,0 +1,19 @@
+@import "../../style/ztao";
+
+
+.list {
+  @include hp2();
+
+  > div {
+    width: 20%;
+    padding: 10px;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+.list_img{
+  height: 500px;
+  overflow: hidden;
+}

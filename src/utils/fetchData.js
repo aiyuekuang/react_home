@@ -1,9 +1,9 @@
 /**
  * Created by admin on 2016/10/10.
  */
-import axios from 'axios'
+import axios from 'axios/index'
 import {qus,cuns} from 'esn'
-import history from '../components/public/history';
+import history from '../work/components/public/history';
 import {  Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete,message,notification } from 'antd';
 import {parm_json} from "@config"
 //封装好的get和post接口，调用方法情况action文件

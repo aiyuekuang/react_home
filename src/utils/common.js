@@ -3,12 +3,13 @@
  */
 import React, {Fragment, Component, PureComponent} from 'react';
 import NProgress from 'nprogress';
-import {api, apt_zs, section, url_add} from "@config"
-import {Button, Input, Alert, notification, Form, Icon, Table, message,Select} from 'antd';
-import {getData, postData} from "../../utils/fetchData"
+import {api, api_callback} from "@config"
+import {is_mock} from "@config/user"
+import {Button, Input, Alert, notification, Form, Icon, Table, message, Select} from 'antd';
+import {getData, postData} from "./fetchData"
 import {qus} from "esn"
 import history from '@components/public/history';
-import moment from "moment";
+
 export const dateFormat = 'YYYY-MM-DD';
 const Option = Select.Option;
 
@@ -22,27 +23,35 @@ export const get_data = async (url = "", parm = {}, chenggong = () => {
 }, all_fun = () => {
 }, erro = () => {
 }) => {
-    // try {
-    NProgress.start();
-    //console.log("请求：",url,parm)
-    let response = await postData(api + url, parm);
-    //await console.log(response.data)
-    await function (response) {
-        chenggong(response.data);
+    try {
+        let api_temp = api;
+        if (is_mock) {
+            api_temp = "/mock"
+        }
+        NProgress.start();
+        let response = await postData(api_temp + url, parm);
+        await function (response) {
+            api_callback(response.data, (data) => {
+                chenggong(data);
+            }, (msg) => {
+                erro();
+                notification["error"]({
+                    message: '提示',
+                    description: msg,
+                });
+            })
+
+            NProgress.done();
+        }(response)
+        await all_fun();
+    } catch (error) {
         NProgress.done();
-    }(response)
-    // } catch (error) {
-    //     NProgress.done();
-    //     all_fun();
-    //     notification['error']({
-    //         message: '警告',
-    //         description: error.message
-    //     });
-    // }
+        all_fun();
+    }
 }
 
 //临时下载插件
-export let downloads=(output,downloadFileName="文件")=>{
+export let downloads = (output, downloadFileName = "文件") => {
     if (window.navigator.msSaveBlob) {
         // for ie 10 and later
         try {
@@ -66,6 +75,7 @@ export let downloads=(output,downloadFileName="文件")=>{
     }
 }
 
+//获取一个唯一的uuid
 export let uid = () => {
     const now = +(new Date());
     return `bee-${now}`;

@@ -10,26 +10,27 @@ import webpack from 'webpack';
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin; //视图分析webpack情况
-import { is_pro, ip, title, dev_port, dns, url_add,pro } from './config/index'
+import { ip, title, dev_port, dns, localhost,api_mapping } from './config/index'
 
 import HappyPack from 'happypack'; //多线程运行
 
 let happyThreadPool = HappyPack.ThreadPool({ size: 4 });
-let dev = process.env.NODE_ENV;
-
-const PUBLIC_PATH = is_pro(`http://${ip}:${dev_port}/${url_add}`, url_add);
+let dev = process.env.NODE_ENV == "development"?"development":"production";
+let dev_bool = process.env.NODE_ENV != "development";
+const PUBLIC_PATH = localhost+"/";
 
 const devtool = {
-  dev: 'cheap-eval-source-map',
-  development: 'cheap-eval-source-map',
+  env: false,
+  development: false,
   production: false,
 };
 
 const minimize = {
-  dev: false,
+  env: false,
   development: false,
   production: true,
 };
+
 const stylus = {
   dev: ['cache-loader', 'style-loader', 'css-loader', 'stylus-loader'],
   development: ['style-loader', 'css-loader', 'stylus-loader'],
@@ -55,16 +56,17 @@ const pluginsPublic = [
     template: path.join(__dirname, '/src/index.ejs'), // Load a custom template
     inject: 'body', //注入到哪里
     filename: 'index.html', //输出后的名称
-    hash: true, //为静态资源生成hash值
+    hash: false, //为静态资源生成hash值
     title: title,
     ip: ip,
     dev_port: dev_port,
     dns: dns,
     url: PUBLIC_PATH,
-    pro:pro
+    pro:dev_bool
   }),
   //new BundleAnalyzerPlugin(),
   new MiniCssExtractPlugin({
+    filename: "[name].[hash].css",
     chunkFilename: '[chunkhash].css',
   }),
   new HappyPack({
@@ -85,7 +87,7 @@ const pluginsPublic = [
 const pluginsBuild = [
   new ExtendedDefinePlugin({
     //全局变量
-    __LOCAL__: false,
+    environment:process.env.NODE_ENV
   }),
   new CleanWebpackPlugin({
     root: __dirname,
@@ -116,13 +118,7 @@ const pluginsBuild = [
 // }),
 const plugins = {
   dev: [].concat(pluginsPublic, pluginsBuild),
-  development: [].concat(
-    pluginsPublic,
-    new ExtendedDefinePlugin({
-      //全局变量
-      __LOCAL__: true,
-    })
-  ),
+  development: [].concat(pluginsPublic),
   production: [].concat(
     pluginsPublic,
     pluginsBuild,
@@ -130,27 +126,58 @@ const plugins = {
       context: __dirname,
       manifest: require('./dll/manifest.json')
     }),
-    new UglifyJsPlugin({
-      // sourceMap: true,
-      parallel: true,
-      cache: true,
-      uglifyOptions: {
-        output: {
-          comments: false,
-          beautify: false,
-        },
-        compress: {
-          drop_console: true,
-          warnings: false,
-          drop_debugger: true,
-        },
-      },
-      exclude: /(node_modules|bower_components)/,
-    }) //压缩，生成map
+    // new UglifyJsPlugin({
+    //   // sourceMap: true,
+    //   parallel: true,
+    //   cache: true,
+    //   uglifyOptions: {
+    //     output: {
+    //       comments: false,
+    //       beautify: false,
+    //     },
+    //     compress: {
+    //       drop_console: true,
+    //       warnings: false,
+    //       drop_debugger: true,
+    //     },
+    //   },
+    //   exclude: /(node_modules|bower_components)/,
+    // }) //压缩，生成map
   ),
 };
 
 export default {
+  optimization: dev_bool ? {
+    runtimeChunk: {
+      name: 'manifest'
+    },
+    //minimizer: true, // [new UglifyJsPlugin({...})]
+    splitChunks: {
+      chunks: 'async',
+      minSize: 30000,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      name: false,
+      cacheGroups: {
+        vendor: {
+          name: 'vendor',
+          chunks: 'initial',
+          priority: -10,
+          reuseExistingChunk: false,
+          test: /node_modules\/(.*)\.js/
+        },
+        styles: {
+          name: 'index',
+          test: /\.(scss|css)$/,
+          chunks: 'all',
+          minChunks: 1,
+          reuseExistingChunk: true,
+          enforce: true
+        }
+      }
+    }
+  } : {},
   devServer: {
     // contentBase: path.join(__dirname, 'dist'), //开发服务运行时的文件根目录
     //host: ip,
@@ -158,12 +185,12 @@ export default {
     port: dev_port, //端口
     historyApiFallback: true, //不会出现404页面，避免找不到
     proxy: {
-      '/list': {
-        target: 'http://lol.qq.com/web201310/js/videodata/LOL_VIDEOLIST_IDX3.js',
-        pathRewrite: {'^/list': ''},
+      '/api': {
+        target:api_mapping.url,
+        pathRewrite: {'^/api': ''},
         changeOrigin: true,
         secure: false
-      }
+      },
     }
   },
   devtool: devtool[dev], //cheap-eval-source-map  是一种比较快捷的map,没有映射列
@@ -183,7 +210,7 @@ export default {
   output: {
     //出口
     path: path.resolve(__dirname, 'dist'), //出口路径
-    filename: 'index.js',
+    filename: '[name].[hash].js',
     chunkFilename: '[chunkhash].js',  //按需加载名称
     publicPath: PUBLIC_PATH, //公共路径
   },
@@ -196,7 +223,8 @@ export default {
       '@reducers': path.resolve(__dirname, 'src/work/reducers'),
       '@images': path.resolve(__dirname, 'src/work/images'),
       '@config': path.resolve(__dirname, './config'),
-      "@utils": path.resolve(__dirname, "src/work/utils"),
+      "@utils": path.resolve(__dirname, "src/utils"),
+      "@style": path.resolve(__dirname, "src/style"),
       '@server': path.resolve(__dirname, 'src/work/server'),
     },
   },

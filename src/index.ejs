@@ -18,218 +18,229 @@
         <link rel="dns-prefetch" href="//<%= item %>">
     <% }) %>
     <style type="text/css">
-        .loader_html {
-            width: 130px;
-            height: 170px;
-            display: inline-block;
-            position: relative;
-        }
-
-        .loader_html::before, .loader_html::after {
-            content: "";
-            width: 0;
-            height: 0;
-            position: absolute;
-            bottom: 30px;
-            left: 15px;
-            z-index: 1;
-            border-left: 50px solid transparent;
-            border-right: 50px solid transparent;
-            border-bottom: 20px solid #1b2a33;
-            -webkit-transform: scale(0);
-            transform: scale(0);
-            transition: all 0.2s ease;
-        }
-
-        .loader_html::after {
-            border-right: 15px solid transparent;
-            border-bottom: 20px solid #162229;
-        }
-
-        .loader_html .getting-there {
-            width: 120%;
-            text-align: center;
-            position: absolute;
-            bottom: 0;
-            left: -7%;
-            font-family: "Lato";
-            font-size: 12px;
-            letter-spacing: 2px;
-            color: white;
-        }
-
-        .loader_html .binary {
-            width: 100%;
-            height: 140px;
-            display: block;
-            color: white;
-            position: absolute;
-            top: 0;
-            left: 15px;
-            z-index: 2;
-            overflow: hidden;
-        }
-
-        .loader_html .binary::before, .loader_html .binary::after {
-            font-family: "Lato";
-            font-size: 24px;
-            position: absolute;
-            top: 0;
+        #i-loading {
+            background: #fff;
             left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            position: fixed;
+            z-index: 9999;
+            transition: all .5s ease-out
+        }
+
+        .i-loading-out {
             opacity: 0;
         }
 
-        .loader_html .binary:nth-child(1)::before {
-            content: "0";
-            -webkit-animation: a 1.1s linear infinite;
-            animation: a 1.1s linear infinite;
+        #i-loading .loading-center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            height: 150px;
+            width: 150px;
+            margin-top: -75px;
+            margin-left: -75px;
+            -ms-transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg)
         }
 
-        .loader_html .binary:nth-child(1)::after {
-            content: "0";
-            -webkit-animation: b 1.3s linear infinite;
-            animation: b 1.3s linear infinite;
+        #i-loading i {
+            width: 20px;
+            height: 20px;
+            background-color: #2593fb;
+            position: absolute;
+            left: 65px;
+            top: 65px
         }
 
-        .loader_html .binary:nth-child(2)::before {
-            content: "1";
-            -webkit-animation: c 0.9s linear infinite;
-            animation: c 0.9s linear infinite;
+        #i-loading i:nth-child(2n+0) {
+            margin-right: 0
         }
 
-        .loader_html .binary:nth-child(2)::after {
-            content: "1";
-            -webkit-animation: d 0.7s linear infinite;
-            animation: d 0.7s linear infinite;
+        #i-loading i:nth-child(1) {
+            -webkit-animation: item_one 2s infinite;
+            animation: item_one 2s infinite;
+            -webkit-animation-delay: .2s;
+            animation-delay: .2s
         }
 
-        .loader_html.JS_on::before, .loader_html.JS_on::after {
-            -webkit-transform: scale(1);
-            transform: scale(1);
+        #i-loading i:nth-child(2) {
+            -webkit-animation: item_two 2s infinite;
+            animation: item_two 2s infinite;
+            -webkit-animation-delay: .3s;
+            animation-delay: .3s
         }
 
-        @-webkit-keyframes a {
-            0% {
-                -webkit-transform: translate(30px, 0) rotate(30deg);
-                transform: translate(30px, 0) rotate(30deg);
-                opacity: 0;
-            }
-            100% {
-                -webkit-transform: translate(30px, 150px) rotate(-50deg);
-                transform: translate(30px, 150px) rotate(-50deg);
-                opacity: 1;
-            }
+        #i-loading i:nth-child(3) {
+            -webkit-animation: item_three 2s infinite;
+            animation: item_three 2s infinite;
+            -webkit-animation-delay: .4s;
+            animation-delay: .4s
         }
 
-        @keyframes a {
-            0% {
-                -webkit-transform: translate(30px, 0) rotate(30deg);
-                transform: translate(30px, 0) rotate(30deg);
-                opacity: 0;
-            }
-            100% {
-                -webkit-transform: translate(30px, 150px) rotate(-50deg);
-                transform: translate(30px, 150px) rotate(-50deg);
-                opacity: 1;
-            }
+        #i-loading i:nth-child(4) {
+            -webkit-animation: item_four 2s infinite;
+            animation: item_four 2s infinite;
+            -webkit-animation-delay: .5s;
+            animation-delay: .5s
         }
 
-        @-webkit-keyframes b {
-            0% {
-                -webkit-transform: translate(50px, 0) rotate(-40deg);
-                transform: translate(50px, 0) rotate(-40deg);
-                opacity: 0;
-            }
-            100% {
-                -webkit-transform: translate(40px, 150px) rotate(80deg);
-                transform: translate(40px, 150px) rotate(80deg);
-                opacity: 1;
-            }
+        #i-loading i:nth-child(5) {
+            -webkit-animation: item_five 2s infinite;
+            animation: item_five 2s infinite;
+            -webkit-animation-delay: .6s;
+            animation-delay: .6s
         }
 
-        @keyframes b {
-            0% {
-                -webkit-transform: translate(50px, 0) rotate(-40deg);
-                transform: translate(50px, 0) rotate(-40deg);
-                opacity: 0;
-            }
-            100% {
-                -webkit-transform: translate(40px, 150px) rotate(80deg);
-                transform: translate(40px, 150px) rotate(80deg);
-                opacity: 1;
-            }
+        #i-loading i:nth-child(6) {
+            -webkit-animation: item_six 2s infinite;
+            animation: item_six 2s infinite;
+            -webkit-animation-delay: .7s;
+            animation-delay: .7s
         }
 
-        @-webkit-keyframes c {
-            0% {
-                -webkit-transform: translate(70px, 0) rotate(10deg);
-                transform: translate(70px, 0) rotate(10deg);
-                opacity: 0;
-            }
-            100% {
-                -webkit-transform: translate(60px, 150px) rotate(70deg);
-                transform: translate(60px, 150px) rotate(70deg);
-                opacity: 1;
-            }
+        #i-loading i:nth-child(7) {
+            -webkit-animation: item_seven 2s infinite;
+            animation: item_seven 2s infinite;
+            -webkit-animation-delay: .8s;
+            animation-delay: .8s
         }
 
-        @keyframes c {
-            0% {
-                -webkit-transform: translate(70px, 0) rotate(10deg);
-                transform: translate(70px, 0) rotate(10deg);
-                opacity: 0;
-            }
-            100% {
-                -webkit-transform: translate(60px, 150px) rotate(70deg);
-                transform: translate(60px, 150px) rotate(70deg);
-                opacity: 1;
+        #i-loading i:nth-child(8) {
+            -webkit-animation: item_eight 2s infinite;
+            animation: item_eight 2s infinite;
+            -webkit-animation-delay: .9s;
+            animation-delay: .9s
+        }
+
+        #i-loading i:nth-child(9) {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            left: 50px;
+            top: 50px;
+            -webkit-animation: item_big 2s infinite;
+            animation: item_big 2s infinite;
+            -webkit-animation-delay: .5s;
+            animation-delay: .5s
+        }
+
+        @-webkit-keyframes item_big {
+            50% {
+                -webkit-transform: scale(0.5)
             }
         }
 
-        @-webkit-keyframes d {
-            0% {
-                -webkit-transform: translate(30px, 0) rotate(-50deg);
-                transform: translate(30px, 0) rotate(-50deg);
-                opacity: 0;
-            }
-            100% {
-                -webkit-transform: translate(45px, 150px) rotate(30deg);
-                transform: translate(45px, 150px) rotate(30deg);
-                opacity: 1;
+        @keyframes item_big {
+            50% {
+                transform: scale(0.5);
+                -webkit-transform: scale(0.5)
             }
         }
 
-        @keyframes d {
-            0% {
-                -webkit-transform: translate(30px, 0) rotate(-50deg);
-                transform: translate(30px, 0) rotate(-50deg);
-                opacity: 0;
-            }
-            100% {
-                -webkit-transform: translate(45px, 150px) rotate(30deg);
-                transform: translate(45px, 150px) rotate(30deg);
-                opacity: 1;
+        @-webkit-keyframes item_one {
+            50% {
+                -webkit-transform: translate(-65px, -65px)
             }
         }
 
-        .dot-ani {
-            display: inline-block;
-            height: 12px;
-            line-height: 12px;
-            overflow: hidden;
+        @keyframes item_one {
+            50% {
+                transform: translate(-65px, -65px);
+                -webkit-transform: translate(-65px, -65px)
+            }
         }
 
-        .dot-ani::after {
-            display: inline-table;
-            white-space: pre;
-            content: "\A.\A..\A...";
-            animation: spin 2s steps(4) infinite;
+        @-webkit-keyframes item_two {
+            50% {
+                -webkit-transform: translate(0, -65px)
+            }
         }
 
-        @keyframes spin {
-            to {
-                -webkit-transform: translateY(-48px);
-                transform: translateY(-48px)
+        @keyframes item_two {
+            50% {
+                transform: translate(0, -65px);
+                -webkit-transform: translate(0, -65px)
+            }
+        }
+
+        @-webkit-keyframes item_three {
+            50% {
+                -webkit-transform: translate(65px, -65px)
+            }
+        }
+
+        @keyframes item_three {
+            50% {
+                transform: translate(65px, -65px);
+                -webkit-transform: translate(65px, -65px)
+            }
+        }
+
+        @-webkit-keyframes item_four {
+            50% {
+                -webkit-transform: translate(65px, 0)
+            }
+        }
+
+        @keyframes item_four {
+            50% {
+                transform: translate(65px, 0);
+                -webkit-transform: translate(65px, 0)
+            }
+        }
+
+        @-webkit-keyframes item_five {
+            50% {
+                -webkit-transform: translate(65px, 65px)
+            }
+        }
+
+        @keyframes item_five {
+            50% {
+                transform: translate(65px, 65px);
+                -webkit-transform: translate(65px, 65px)
+            }
+        }
+
+        @-webkit-keyframes item_six {
+            50% {
+                -webkit-transform: translate(0, 65px)
+            }
+        }
+
+        @keyframes item_six {
+            50% {
+                transform: translate(0, 65px);
+                -webkit-transform: translate(0, 65px)
+            }
+        }
+
+        @-webkit-keyframes item_seven {
+            50% {
+                -webkit-transform: translate(-65px, 65px)
+            }
+        }
+
+        @keyframes item_seven {
+            50% {
+                transform: translate(-65px, 65px);
+                -webkit-transform: translate(-65px, 65px)
+            }
+        }
+
+        @-webkit-keyframes item_eight {
+            50% {
+                -webkit-transform: translate(-65px, 0)
+            }
+        }
+
+        @keyframes item_eight {
+            50% {
+                transform: translate(-65px, 0);
+                -webkit-transform: translate(-65px, 0)
             }
         }
     </style>
@@ -237,13 +248,20 @@
 <script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
 <body>
 <div id="root">
-    <div class="html_loading">
-        <div class="loader_html JS_on">
-            <span class="binary"></span>
-            <span class="binary"></span>
-            <span class="getting-there">最新数据加载中<span class="dot-ani"></span></span>
+    <div id="i-loading">
+        <div class="loading-center">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
         </div>
     </div>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
 </div>
 <% if (htmlWebpackPlugin.options.pro) { %>
     <script src='<%= htmlWebpackPlugin.options.url %>Dll.js'></script>

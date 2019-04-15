@@ -1,4 +1,4 @@
-import {getData,postData} from "../utils/fetchData"
+import {getData,postData} from "../../utils/fetchData"
 import {  message,notification} from 'antd';
 import NProgress from 'nprogress';
 import {val_empty,str_val} from 'esn'

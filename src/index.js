@@ -7,6 +7,9 @@ import zhCN from 'antd/lib/locale-provider/zh_CN';
 import {LocaleProvider} from 'antd';
 import "nprogress/nprogress.css";
 import "anup/dist/anup.css";
+import "./work/style/ztao.scss";
+
+
 ReactDOM.render(
     <LocaleProvider locale={zhCN}>
         <Provider store={store}>

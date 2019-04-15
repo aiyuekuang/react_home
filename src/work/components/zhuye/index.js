@@ -40,7 +40,8 @@ class Index extends React.Component {
             <div className="zhuye">
                 <Head {...this.props} />
                 <div className="index_caidan">
-                    <Link to="/neiye_1">内页1</Link> <Link to="/neiye_2">内页2</Link>
+                    <Link to="/neiye_1">内页1</Link>
+                    <Link to="/neiye_2">内页2</Link>
                 </div>
                 <img style={{width:200}} src={tu} alt=""/>
                 <div>
