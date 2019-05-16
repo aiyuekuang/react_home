@@ -4,7 +4,7 @@
 import React, {Fragment, Component, PureComponent} from 'react';
 import NProgress from 'nprogress';
 import {api, apt_zs, section, url_add} from "@config"
-import {Button, Input, Alert, notification, Form, Icon, Table, message,Select} from 'antd';
+import {Button, Input, Alert, notification, Form, Icon, Table, message,Select} from 'antd/lib/index';
 import {getData, postData} from "../../utils/fetchData"
 import {qus} from "esn"
 import history from '@components/public/history';
@@ -26,6 +26,29 @@ export const get_data = async (url = "", parm = {}, chenggong = () => {
     NProgress.start();
     //console.log("请求：",url,parm)
     let response = await postData(api + url, parm);
+    //await console.log(response.data)
+    await function (response) {
+        chenggong(response.data);
+        NProgress.done();
+    }(response)
+    // } catch (error) {
+    //     NProgress.done();
+    //     all_fun();
+    //     notification['error']({
+    //         message: '警告',
+    //         description: error.message
+    //     });
+    // }
+}
+
+export const get_data_get = async (url = "", parm = {}, chenggong = () => {
+}, all_fun = () => {
+}, erro = () => {
+}) => {
+    // try {
+    NProgress.start();
+    //console.log("请求：",url,parm)
+    let response = await postData(api + url, parm,"get");
     //await console.log(response.data)
     await function (response) {
         chenggong(response.data);

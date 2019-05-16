@@ -6,7 +6,6 @@ const vendors = [
   'react',
   'react-dom',
   'axios',
-  'react-loadable',
   'react-router',
   'react-router-dom',
   'antd',

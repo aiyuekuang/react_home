@@ -2,11 +2,7 @@
  * Created by zengtao on 2017/5/19.
  */
 import React, {Fragment, Component, PureComponent,createRef} from 'react';
-import {Button, Input, Spin} from 'antd';
-import {bindActionCreators} from "redux"
-import {connect} from "react-redux"
-import * as index_act from "@actions/index";
-import {mapstate} from "@reducers/shuju"
+import {Button, Input, Spin} from 'antd/lib/index';
 import {
     Router,
     Route,
@@ -19,7 +15,7 @@ import {get_data} from "@components/public/common"
 
 //本项目的模板页面
 
-class Index extends Component {
+export default class Index extends Component {
 
     static defaultProps = {
         url: ""
@@ -80,9 +76,3 @@ class Index extends Component {
     }
 }
 
-function bindact(dispatch) {
-    return bindActionCreators(index_act, dispatch)
-}
-
-
-export default connect(mapstate, bindact)(Index);

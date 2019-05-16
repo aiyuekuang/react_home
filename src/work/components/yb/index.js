@@ -1,12 +1,8 @@
 /**
  * Created by zengtao on 2017/5/19.
  */
-import React,{Fragment,Component,PureComponent} from 'react';
-import { Button, Input, Modal } from 'antd';
-import { bindActionCreators } from "redux"
-import { connect } from "react-redux"
-import * as index_act from "@actions/index";
-import { mapstate } from "@reducers/shuju"
+import React, {Fragment, Component, PureComponent} from 'react';
+import { Button, Input, Modal } from 'antd/lib/index';
 import {
     Router,
     Route,
@@ -14,9 +10,9 @@ import {
     Link
 } from 'react-router-dom';
 import history from '@components/public/history';
-import {cuns} from 'esn'
-import {get_data} from "@components/public/common"
-import "./index.scss"
+import {cuns} from 'esn';
+import {get_data} from '@components/public/common';
+import './index.scss';
 //本项目的模板页面
 
 class Index extends Component {
@@ -25,7 +21,7 @@ class Index extends Component {
 
     }
 
-    static getDerivedStateFromProps(nextProps,prevState) {
+    static getDerivedStateFromProps(nextProps, prevState) {
         // const {value} = nextProps;
         // 当传入的type发生变化的时候，更新state
         // if ("value" in nextProps && value !== prevState.value) {
@@ -63,13 +59,7 @@ class Index extends Component {
             <React.Fragment>
 
             </React.Fragment>
-        )
+        );
     }
 }
 
-function bindact(dispatch) {
-    return bindActionCreators(index_act, dispatch)
-}
-
-
-export default connect(mapstate, bindact)(Index);

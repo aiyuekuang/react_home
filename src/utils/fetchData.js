@@ -1,11 +1,11 @@
 /**
  * Created by admin on 2016/10/10.
  */
-import axios from 'axios'
+import axios from 'axios/index'
 import {qus,cuns} from 'esn'
-import history from '../components/public/history';
-import {  Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete,message,notification } from 'antd';
-import {parm_json} from "@config"
+import history from '../work/components/public/history';
+import { message } from 'antd/lib/index';
+import {parm_is_json} from "@config"
 //封装好的get和post接口，调用方法情况action文件
 export let Axios = axios.create({
     // baseURL: API_URL, //设置默认api路径
@@ -13,14 +13,17 @@ export let Axios = axios.create({
     headers: {
         'X-Custom-Header': 'foobar',
         responseType: "json",
-        'content-type': parm_json?'application/json':'application/x-www-form-urlencoded',
+        'content-type': parm_is_json?'application/json':'application/x-www-form-urlencoded',
     }
 });
+
+
 Axios.defaults.withCredentials = true;
 // 配置发送请求拦截器
 const CancelToken = axios.CancelToken;
 const source = CancelToken.source();
 window.requestCancel = source.cancel // 保存到全局变量，用于路由切换时调用
+
 
 Axios.interceptors.request.use(config => {
     config.cancelToken = source.token
@@ -73,7 +76,6 @@ Axios.interceptors.response.use(function (response) {
                 err.message = `连接出错(${err.response.status})!`;
         }
     } else {
-        console.log(err)
         err.message = '连接服务器失败!'
     }
     return Promise.reject(err);
@@ -83,14 +85,14 @@ Axios.interceptors.response.use(function (response) {
 export const getData = (url, param = {}) => {
     return (
         Axios.get(`${url}`, {
-            params: parm_json?param:getFormJson(param)
+            params: parm_is_json?param:getFormJson(param)
         })
     )
 }
 
-export const postData = (url, param = {}) => {
+export const postData = (url, param = {},method="post") => {
     return (
-        Axios.post(`${url}`, parm_json?param:getFormJson(param))
+        Axios[method](`${url}`, parm_is_json?param:getFormJson(param))
     )
 }
 
@@ -101,6 +103,5 @@ function getFormJson(obj) {
             oMyForm.append(i,obj[i]);
         }
     }
-
     return oMyForm;
 }

@@ -5,13 +5,9 @@ import {
     Switch,
     Redirect
 } from 'react-router-dom';
-import {bindActionCreators} from "redux"
-import {connect} from "react-redux"
-import * as index_act from "@actions/index";
-import {mapstate} from "@reducers/shuju"
-import history from './work/components/public/history';
-import {url_add} from "@config"
-import {url_data} from "./work/router/data"
+import history from '@components/public/history';
+import {url_add} from '@config';
+import {url_data} from './work/router/data';
 
 class App extends React.Component {
     constructor(props, context) {
@@ -25,21 +21,20 @@ class App extends React.Component {
             if (data.children && data.children.length > 0) {
                 return (
                     <data.comp key={i}>
-                            {list(data.children)}
+                        {list(data.children)}
                     </data.comp>
-                )
+                );
             }
             if (data.auth) {
                 if (auth_arr.find((data_arr) => data_arr == data.auth)) {
-                    return (<Route key={i} exact path={url_add + data.url} component={data.comp}/>)
+                    return (<Route key={i} exact path={url_add + data.url} component={data.comp}/>);
                 } else {
-                    return null
+                    return null;
                 }
             } else {
-                return (<Route key={i} exact path={url_add + data.url} component={data.comp}/>)
+                return (<Route key={i} exact path={url_add + data.url} component={data.comp}/>);
             }
-
-        })
+        });
 
         return (
             <Router
@@ -59,10 +54,4 @@ class App extends React.Component {
     }
 }
 
-
-function bindact(dispatch) {
-    return bindActionCreators(index_act, dispatch)
-}
-
-
-export default connect(mapstate, bindact)(App);
+export default App;

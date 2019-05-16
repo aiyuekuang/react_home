@@ -1,16 +1,16 @@
 /**
  * Created by zengtao on 2017/5/19.
  */
-import React,{Fragment,Component} from 'react';
-import si from "@images/404.jpg"
-import tf from "@images/tfans.jpg"
+import React, {Fragment, Component} from 'react';
+import si from '@images/404.jpg';
+import tf from '@images/tfans.jpg';
 import {
     Router,
     Route,
     Switch,
     Link
 } from 'react-router-dom';
-import {url_add} from "@config";
+import {url_add} from '@config';
 //本项目的模板页面
 
 
@@ -19,7 +19,7 @@ export default class Index extends Component {
 
     }
 
-    static getDerivedStateFromProps(nextProps,prevState) {
+    static getDerivedStateFromProps(nextProps, prevState) {
         // const {value} = nextProps;
         // 当传入的type发生变化的时候，更新state
         // if ("value" in nextProps && value !== prevState.value) {
@@ -66,6 +66,6 @@ export default class Index extends Component {
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }
