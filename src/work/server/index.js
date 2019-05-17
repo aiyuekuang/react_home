@@ -1,6 +1,8 @@
-import {get_data, get_data_get} from '@components/public/common';
+import {get_data, get_data_get} from '@common';
 
-export let list = (fun, r = '0.7153214477881407') => get_data('/', {r}, (data) => {
+export let list = (fun, page=1) => get_data('/list', {
+    page
+}, (data) => {
     fun(data);
 });
 

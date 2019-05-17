@@ -126,7 +126,7 @@ export default {
         historyApiFallback: true, //不会出现404页面，避免找不到
         proxy: {
             '/list': {
-                target: 'http://lol.qq.com/web201310/js/videodata/LOL_VIDEOLIST_IDX3.js',
+                target: 'https://www.apiopen.top/meituApi',
                 pathRewrite: {'^/list': ''},
                 changeOrigin: true,
                 secure: false

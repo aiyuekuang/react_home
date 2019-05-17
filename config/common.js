@@ -28,5 +28,5 @@ export let title = 'react_home'
 //需要预加载的dns
 export let dns = ['www.baidu.com', 'www.qq.com']
 //api接口的数组
-export let api = env_fun("/ap_com","","/");
+export let api = env_fun("/list","","/");
 
