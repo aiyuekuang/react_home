@@ -10,7 +10,7 @@ import {pro} from '@config';
 import {inject, observer} from 'mobx-react';
 
 
-@inject( 'userStore')
+@inject( 'userStore', 'test')
 @observer
 class Index extends React.Component {
     constructor(arg) {
@@ -24,11 +24,12 @@ class Index extends React.Component {
 
 
   render() {
-      const {userStore} = this.props;
+      const {userStore, test} = this.props;
       return (
           <div className="zhuye">
             我是首页{pro}<br/>
-              {userStore.user.name}
+              {userStore.user.name}<br/>
+              {test.shishi}
           </div>
       );
   }

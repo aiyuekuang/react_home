@@ -7,8 +7,9 @@ import 'nprogress/nprogress.css';
 import {configure} from 'mobx';
 import {Provider} from 'mobx-react';
 import userStore from '@mobx';
+import test from '@mobx/tests';
 const stores = {
-    userStore
+    userStore, test
 };
 
 configure({'enforceActions': 'always'});
