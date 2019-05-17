@@ -2,7 +2,7 @@
  * Created by zengtao on 2017/5/19.
  */
 import React from 'react';
-import {Card} from 'antd';
+import {Card, Pagination, Spin} from 'antd';
 import {Link} from 'react-router-dom';
 import {cuns} from 'esn';
 import tu from '@images/y.jpg';
@@ -18,7 +18,8 @@ class Index extends React.Component {
     constructor(arg) {
         super(arg);
         this.state = {
-            data: []
+            data: [],
+            loading:false
         };
     }
 
@@ -28,17 +29,29 @@ class Index extends React.Component {
     };
 
     componentDidMount() {
+        this.get_list();
+    }
+
+    get_list = (page = 1) => {
+        this.setState({
+            loading:true
+        })
         list((data) => {
             console.log(data);
             this.setState({
-                data: data.data
+                data: data.data,
+                loading:false
             });
-        });
-    }
+        }, page);
+    };
+
+    change = (page, pageSize) => {
+        this.get_list(page);
+    };
 
     render() {
         const {userStore, test} = this.props;
-        const {data} = this.state;
+        const {data,loading} = this.state;
 
         let li = data.map((value, i) => (
             <div
@@ -58,8 +71,13 @@ class Index extends React.Component {
         ));
         return (
             <div className="zhuye">
-                <div className="zhuye_li">
-                    {li}
+                <Spin  tip="Loading..." spinning={loading}>
+                    <div className="zhuye_li">
+                        {li}
+                    </div>
+                </Spin>
+                <div className="zhuye_page">
+                    <Pagination defaultCurrent={1} total={1000} onChange={this.change}/>
                 </div>
             </div>
         );

@@ -5,12 +5,20 @@
 @import "static/anim";
 
 .zhuye_li{
-  @include hp2();
+  @include hp();
+  min-height: 500px;
   >div{
     width: 300px;
     text-align: center;
+    >div{
+      display: inline-block;
+    }
   }
   img{
     width: 100%;
   }
+}
+.zhuye_page{
+  text-align: center;
+  padding: 20px;
 }
