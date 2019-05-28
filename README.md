@@ -30,19 +30,19 @@
 9. 本项目有简单的脚手架工具[ztao-cli](https://github.com/aiyuekuang/ztao.git)，可以直接只用，更加方便快捷
 
 # 项目结构
-1.config：用于配置各种变量，有webpack中用到的，也有项目中用到的，比如"img_add_url"这个字段就是图片上传的前缀，用于图片上传后，后台没有返回完整的图片url，只返回图片的名称后缀时，在前面加上地址的作用
-2.dll：在package的script里面有dll，用于提前打包我们常用的库的一个工具，加快我们的编译时间的
-3.dist：打包后的代码
-4.src/utils：用于开发主管放置公共函数的地方
-5.src/work：开发组员用于开发业务的地方（page：每个页面都放在这里面，router：路由的数据结构都在这里，server：所有的ajax请求都写在这里，方便后续复用，components用于存放复用组件的地方，images存放图片，图片可以在页面直接import引用，common是用于存放业务中公共的函数的与业务紧密结合的这种）
-6..eslintrc.js是eslint的配置文件
-7.webpack.config.babel.js是webpack的配置文件，支持es6写法
-8.webpack.dll.config.js是用于打包dll的配置文件，你也可以将库打包进去，加快整个项目的编译时间
+1. config：用于配置各种变量，有webpack中用到的，也有项目中用到的，比如"img_add_url"这个字段就是图片上传的前缀，用于图片上传后，后台没有返回完整的图片url，只返回图片的名称后缀时，在前面加上地址的作用
+2. dll：在package的script里面有dll，用于提前打包我们常用的库的一个工具，加快我们的编译时间的
+3. dist：打包后的代码
+4. src/utils：用于开发主管放置公共函数的地方
+5. src/work：开发组员用于开发业务的地方（page：每个页面都放在这里面，router：路由的数据结构都在这里，server：所有的ajax请求都写在这里，方便后续复用，components用于存放复用组件的地方，images存放图片，图片可以在页面直接import引用，common是用于存放业务中公共的函数的与业务紧密结合的这种）
+6. .eslintrc.js是eslint的配置文件
+7. webpack.config.babel.js是webpack的配置文件，支持es6写法
+8. webpack.dll.config.js是用于打包dll的配置文件，你也可以将库打包进去，加快整个项目的编译时间
 
 # 项目适用对象
-1.团队式协作：由一个主管负责项目的整体环境，src/work以外各个文件的维护，比如config，webpack，mock，utils之类的，团队成员负责项目的业务部分src/work不需要关注此以外的部分，有任何问题可以咨询主管
-2.适用项目：适用于antd pro项目之外的所有项目，和嫌antd pro过于庞大的项目，简单说就是，不想用antd pro的，都可以用这个开发项目
-3.后续：本项目是一个架构基础，旨在更简单的让所有用户在项目架构阶段，简化工作，并且让所有团队成员更快的熟悉这个架构，将更多的精力放在分析需求和代码实现上，本人有一揽子的从需求发起到项目上线的流程优化系统，将在后续的博客中一一分享，同时也会有各类配套工具的分享
+1. 团队式协作：由一个主管负责项目的整体环境，src/work以外各个文件的维护，比如config，webpack，mock，utils之类的，团队成员负责项目的业务部分src/work不需要关注此以外的部分，有任何问题可以咨询主管
+2. 适用项目：适用于antd pro项目之外的所有项目，和嫌antd pro过于庞大的项目，简单说就是，不想用antd pro的，都可以用这个开发项目
+3. 后续：本项目是一个架构基础，旨在更简单的让所有用户在项目架构阶段，简化工作，并且让所有团队成员更快的熟悉这个架构，将更多的精力放在分析需求和代码实现上，本人有一揽子的从需求发起到项目上线的流程优化系统，将在后续的博客中一一分享，同时也会有各类配套工具的分享
 
 
 # 使用方法（建议使用yarn，尽量不要用cnpm）：
@@ -55,7 +55,7 @@
     访问地址：http://localhost:3012
     
 # 注意以及搭建环境时问题汇总
-1.如果在build或者start的时候出现node-sass之类的报错，可以使用 npm rebuild node-sass来处理下，再build或start，也可以参考[地址](https://juejin.im/post/5cde1df65188250a8f72ff68)。
+1. 如果在build或者start的时候出现node-sass之类的报错，可以使用 npm rebuild node-sass来处理下，再build或start，也可以参考[地址](https://juejin.im/post/5cde1df65188250a8f72ff68)。
   
 
 # 打包上线

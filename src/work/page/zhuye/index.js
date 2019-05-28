@@ -77,7 +77,7 @@ class Index extends React.Component {
                     </div>
                 </Spin>
                 <div className="zhuye_page">
-                    <Pagination defaultCurrent={1} total={1000} onChange={this.change}/>
+                    <Pagination total={1000} onChange={this.change}/>
                 </div>
             </div>
         );
