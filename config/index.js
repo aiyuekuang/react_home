@@ -1,7 +1,7 @@
 //本地调试时的地址
 export let ip = 'localhost';
 //本地调试时的端口
-export let dev_port = 3007;
+export let dev_port = 3008;
 
 
 

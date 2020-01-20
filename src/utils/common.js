@@ -5,7 +5,7 @@ import React, {Fragment, Component, PureComponent} from 'react';
 import NProgress from 'nprogress';
 import {api, api_callback} from "@config"
 import {is_mock} from "@config/user"
-import {Button, Input, Alert, notification, Form, Icon, Table, message, Select} from 'antd';
+import {Button, Input, Alert, notification, Form, Table, message, Select} from 'antd';
 import {getData, postData} from "./fetchData"
 import {qus} from "esn"
 import history from '@components/public/history';

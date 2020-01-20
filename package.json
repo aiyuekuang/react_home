@@ -7,7 +7,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server  --open --color --hot --mode development --inline   --profile --env.dev=development",
     "build": "cross-env NODE_ENV=production webpack --progress --profile  --mode production --env.dev=production",
-    "env": "cross-env NODE_ENV=env webpack --progress --profile  --mode production --env.dev=production",
+    "env": "cross-env NODE_ENV=env webpack --progress --profile  --mode env --env.dev=production",
     "dll": "webpack  --mode production  --profile --inline --config webpack.dll.config.js "
   },
   "author": "ztao",

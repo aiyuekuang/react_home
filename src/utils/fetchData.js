@@ -4,7 +4,7 @@
 import axios from 'axios/index'
 import {qus,cuns} from 'esn'
 import history from '../work/components/public/history';
-import {  Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete,message,notification } from 'antd';
+import {  Form, Input, Tooltip, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete,message,notification } from 'antd';
 import {parm_json} from "@config"
 //封装好的get和post接口，调用方法情况action文件
 export let Axios = axios.create({
