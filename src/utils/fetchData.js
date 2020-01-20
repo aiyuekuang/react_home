@@ -1,11 +1,10 @@
 /**
  * Created by admin on 2016/10/10.
  */
-import axios from 'axios/index'
+import axios from 'axios'
 import {qus,cuns} from 'esn'
 import history from '../work/components/public/history';
-import { message } from 'antd/lib/index';
-import {parm_is_json} from "@config"
+import { message } from 'antd';
 //封装好的get和post接口，调用方法情况action文件
 export let Axios = axios.create({
     // baseURL: API_URL, //设置默认api路径
@@ -13,7 +12,7 @@ export let Axios = axios.create({
     headers: {
         'X-Custom-Header': 'foobar',
         responseType: "json",
-        'content-type': parm_is_json?'application/json':'application/x-www-form-urlencoded',
+        'content-type': 'application/json',
     }
 });
 
@@ -85,19 +84,19 @@ Axios.interceptors.response.use(function (response) {
 export const getData = (url, param = {}) => {
     return (
         Axios.get(`${url}`, {
-            params: parm_is_json?param:getFormJson(param)
+            params: param
         })
     )
 }
 
 export const postData = (url, param = {},method="post") => {
     return (
-        Axios[method](`${url}`, parm_is_json?param:getFormJson(param))
+        Axios[method](`${url}`, param)
     )
 }
 
 function getFormJson(obj) {
-    var oMyForm = new FormData();
+    let oMyForm = new FormData();
     for(let i in obj){
         if(obj[i] != null){
             oMyForm.append(i,obj[i]);

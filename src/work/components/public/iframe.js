@@ -2,7 +2,7 @@
  * Created by zengtao on 2017/5/19.
  */
 import React, {Fragment, Component, PureComponent,createRef} from 'react';
-import {Button, Input, Spin} from 'antd/lib/index';
+import {Button, Input, Spin} from 'antd';
 import {
     Router,
     Route,

@@ -5,10 +5,10 @@ import React from 'react';
 import {Card, Pagination, Spin} from 'antd';
 import {Link} from 'react-router-dom';
 import {cuns} from 'esn';
-import tu from '@images/y.jpg';
-import {pro} from '@config';
 import {inject, observer} from 'mobx-react';
 import {list} from '@server';
+import {baseImgUrl} from "@config"
+import {ip, localhost,} from '@config/common';
 
 const {Meta} = Card;
 
@@ -25,7 +25,7 @@ class Index extends React.Component {
 
 
     componentWillMount = () => {
-
+        console.log(`${baseImgUrl}/y.jpg`)
     };
 
     componentDidMount() {
@@ -60,12 +60,12 @@ class Index extends React.Component {
                 <Card
                     hoverable
                     style={{width: 240}}
-                    cover={<a href={value.url} target="_blank"><img alt={value.type} src={value.url} onError={(e) => {
+                    cover={<a href={value.url} target="_blank"><img alt={value.type} src={`${baseImgUrl}/y.jpg`} onError={(e) => {
                         e.target.onerror = null;
-                        e.target.src = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558100080721&di=ee288567a95efe6b659a55808ac8956b&imgtype=0&src=http%3A%2F%2Fpic8.nipic.com%2F20100728%2F3525627_100908018992_2.jpg';
+                        e.target.src = `${baseImgUrl}/y.jpg`;
                     }}/></a>}
                 >
-                    <Meta title={value.type} description={value.type}/>
+                    <Meta title={value.userId} description={value.userId}/>
                 </Card>
             </div>
         ));

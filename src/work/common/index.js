@@ -20,7 +20,7 @@ export const get_data = async (url = '', parm = {}, chenggong = () => {
 }) => {
     try {
         NProgress.start();
-        let response = await postData(api + url, parm);
+        let response = await postData(api.name + url, parm);
         await function (response) {
             chenggong(response.data);
             NProgress.done();
@@ -41,7 +41,7 @@ export const get_data_get = async (url = '', parm = {}, chenggong = () => {
     try {
     NProgress.start();
     //console.log("请求：",url,parm)
-    let response = await getData(api + url, parm, 'get');
+    let response = await getData(api.name + url, parm, 'get');
     //await console.log(response.data)
     await function (response) {
         chenggong(response.data);

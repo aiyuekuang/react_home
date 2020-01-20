@@ -2,24 +2,29 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import App from './routes';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
-import {LocaleProvider} from 'antd';
-import 'nprogress/nprogress.css';
+import {ConfigProvider} from 'antd';
 import "./work/style/ztao.scss"
 import {configure} from 'mobx';
 import {Provider} from 'mobx-react';
 import userStore from '@mobx';
 import test from '@mobx/tests';
+import {is_mock} from '@config';
 const stores = {
     userStore, test
 };
 
+if(is_mock){
+    require("@mock")
+
+}
+
 configure({'enforceActions': 'always'});
 
 ReactDOM.render(
-    <LocaleProvider locale={zhCN}>
+    <ConfigProvider csp={{ nonce: zhCN }}>
         <Provider {...stores}>
             <App/>
         </Provider>
-    </LocaleProvider>,
+    </ConfigProvider>,
     document.getElementById('root')
 );
