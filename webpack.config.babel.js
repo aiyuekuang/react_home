@@ -4,7 +4,7 @@ const theme = require(path.join(__dirname, '/package.json')).theme;
 import HtmlWebpackPlugin from 'html-webpack-plugin'; //html
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'; //css压缩
 import ExtendedDefinePlugin from 'extended-define-webpack-plugin'; //全局变量
-const {CleanWebpackPlugin } = require('clean-webpack-plugin'); //清空
+const {CleanWebpackPlugin} = require('clean-webpack-plugin'); //清空
 import CopyWebpackPlugin from 'copy-webpack-plugin'; //复制静态html
 import webpack from 'webpack';
 import TerserPlugin from 'terser-webpack-plugin';
@@ -275,7 +275,7 @@ export default {
                     }
                 }, {
                     loader: 'less-loader', options: {
-                        javascriptEnabled: true,
+                        javascriptEnabled: true
                         // modifyVars: {
                         //     'primary-color': '#1DA57A',
                         //     'link-color': '#1DA57A',
@@ -292,15 +292,15 @@ export default {
                     {
                         loader: 'css-loader',
                         options: {
-                            minimize: minimize[dev], //压缩
+                            minimize: minimize[dev] //压缩
                             // sourceMap: minimize[dev],
-                        },
+                        }
                     },
                     {
                         loader: 'sass-loader',
                         options: {modifyVars: theme}
-                    },
-                ],
+                    }
+                ]
             }
         ]
     },

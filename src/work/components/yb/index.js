@@ -11,7 +11,6 @@ import {
 } from 'react-router-dom';
 import history from '@components/public/history';
 import {cuns} from 'esn';
-import {get_data} from '@components/public/common';
 import './index.scss';
 //本项目的模板页面
 

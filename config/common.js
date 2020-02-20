@@ -1,5 +1,5 @@
 //这里存放配置项目用到的全局配置
-function getLocalIP() {
+export function getLocalIP() {
     const interfaces = require('os').networkInterfaces(); // 在开发环境中获取局域网中的本机iP地址
     let IPAdress = '';
     for (let devName in interfaces) {
@@ -20,7 +20,7 @@ function getLocalIP() {
 }
 
 //判断是node环境还是浏览器环境，加载不同的环境判断
-function envir() {
+export function envir() {
     let sw = null;
     try {
         sw = environment;
@@ -55,7 +55,7 @@ export let url_add = is_pro('', "", '');
 export let ip = getLocalIP();
 
 //本地调试时的端口
-export let dev_port = 3012
+export let dev_port = 3015
 
 //网站站点地址
 export let localhost = is_pro(`http://${ip}:${dev_port}`, "", "")
