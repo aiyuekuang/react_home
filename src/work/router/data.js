@@ -1,5 +1,5 @@
 import React, {Fragment, Component, PureComponent} from 'react';
-import Index from '../page/zhuye';
+import Index from '../page/home';
 import history from '@components/public/history';
 import {qus} from 'esn';
 
