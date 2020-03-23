@@ -1,28 +1,39 @@
 import React, {Fragment, Component, PureComponent} from 'react';
-import Index from '../page/home';
-import history from '@components/public/history';
-import {qus} from 'esn';
+import Index from "@page/home"
+import One from "@page/pageOne"
+import Two from "@page/pageTwo"
+import {createMap} from 'esn';
 
-let get_token = () => qus('token');
+export const urlCompEnum = createMap([{
+    alias: "home",
+    component: Index
+},{
+    alias: "page_1",
+    component: One
+}], "alias")
 
-export let url_data = [{
-    name: '首页',
-    url: null,
-    comp: Index,
-    auth: false,
+
+export let baseRoutes = [{
+    name: "主页",
+    path: "/",
+    component: "home",
+    icon: "home",
+}, {
+    name: "内页",
+    icon: "page",
+    path: "/page",
     children: [
         {
-            name: '首页',
-            url: '/neiye_1',
-            comp: null,
-            auth: false,
-            children: null
-        }, {
-            name: '首页',
-            url: '/neiye_2',
-            comp: null,
-            auth: false,
-            children: null
+            name: "内页-1",
+            icon: "user",
+            path: "/p_1",
+            component: "page_1",
+        },
+        {
+            name: "内页-2",
+            icon: "user",
+            path: "/p_2",
+            component:Two,
         }
     ]
 }

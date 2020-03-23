@@ -6,10 +6,9 @@ import {configure} from 'mobx';
 import {Provider} from 'mobx-react';
 import userStore from '@mobx';
 import test from '@mobx/tests';
-import locales from '@mobx/locales';
 import {is_mock} from '@config';
 const stores = {
-    userStore, test,locales
+    userStore, test
 };
 
 if(is_mock){

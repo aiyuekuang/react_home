@@ -3,7 +3,6 @@
  */
 import axios from 'axios'
 import {qus,cuns} from 'esn'
-import history from '../work/components/public/history';
 import { message } from 'antd';
 //封装好的get和post接口，调用方法情况action文件
 export let Axios = axios.create({

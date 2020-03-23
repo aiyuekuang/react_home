@@ -207,7 +207,8 @@ export default {
             '@mobx': path.resolve(__dirname, 'src/work/mobx'),
             '@page': path.resolve(__dirname, 'src/work/page'),
             '@utils': path.resolve(__dirname, 'src/utils'),
-            '@mock': path.resolve(__dirname, 'mock')
+            '@mock': path.resolve(__dirname, 'mock'),
+            '@enum': path.resolve(__dirname, 'src/work/enum'),
         }
     },
     module: {

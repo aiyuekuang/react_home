@@ -1,106 +1,38 @@
 /**
  * Created by zengtao on 2017/5/19.
  */
-import React from 'react';
-import {Card, Pagination, Spin,Radio} from 'antd';
-import {Link} from 'react-router-dom';
-import {cuns} from 'esn';
+import React, {useEffect, useState} from 'react';
+import './index.scss'
 import {inject, observer} from 'mobx-react';
-import {list} from '@server';
-import {baseImgUrl} from "@config"
-import {Example} from '@components/hook';
-import intl from 'react-intl-universal';
-import {toJS} from 'mobx';
-import {localesList} from '@mobx/locales';
-const {Meta} = Card;
+import {history,Link} from "react-router-pro"
 
-@inject('userStore', 'test',"locales")
-@observer
-class Index extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: [],
-            loading:false
-        };
-        intl.init({
-            currentLocale: toJS(this.props.locales.language).locales,  // 设置初始语音
-            locales:localesList
-        }).then(() => {
 
-        });
-        this.get_list();
+let index = (props) => {
+    const {userStore} = props;
+    // Declare a new state variable, which we'll call "count"
+    const [count, setCount] = useState(0);
+    //当前语言
 
+    useEffect(() => {
+        // Update the document title using the browser API
+        console.log('组件加载')
+
+        return () => {
+            console.log('组件即将卸载----')
+        }
+    }, [count]);
+
+
+    function toOne() {
+        history.push("/page/p_1")
     }
 
-    changeLocale=(e)=>{
-        this.props.locales.changeLanguage(e.target.value)
-    }
-
-    get_list = (page = 1) => {
-        this.setState({
-            loading:true
-        })
-        list((data) => {
-            console.log(data);
-            this.setState({
-                data: data.data,
-                loading:false
-            });
-        }, page);
-    };
-
-    change = (page, pageSize) => {
-        this.get_list(page);
-    };
-
-
-
-    render() {
-        const {userStore, test} = this.props;
-        const {data,loading} = this.state;
-
-        let li = data.map((value, i) => (
-            <div
-                key={i}
-            >
-                <Card
-                    hoverable
-                    style={{width: 240}}
-                    cover={<a href={value.url} target="_blank"><img alt={value.type} src={`${baseImgUrl}/y.jpg`} onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = `${baseImgUrl}/y.jpg`;
-                    }}/></a>}
-                >
-                    <Meta title={value.userId} description={value.userId}/>
-                </Card>
-            </div>
-        ));
-        return (
-            <div className="zhuye">
-                <Example/>
-
-                <Radio.Group onChange={this.changeLocale}>
-                    <Radio.Button key="en" value={"en_US"}>
-                        English
-                    </Radio.Button>
-                    <Radio.Button key="cn" value={"zh_CN"}>
-                        中文
-                    </Radio.Button>
-                </Radio.Group>
-                <p>国际化测试: {intl.get('key1')}</p>
-                <Spin  tip="Loading..." spinning={loading}>
-                    <div className="zhuye_li">
-                        {li}
-                    </div>
-                </Spin>
-                <div className="zhuye_page">
-                    <Pagination total={1000} onChange={this.change} showSizeChanger/>
-                </div>
-            </div>
-        );
-    }
+    return (
+        <div className="react_home">
+            <a onClick={()=>toOne()}>去第一个内页</a>
+            <Link to="/page/p_2">去第二个内页</Link>
+        </div>
+    );
 }
 
-
-export default Index;
+export default inject( 'userStore')(observer(index));

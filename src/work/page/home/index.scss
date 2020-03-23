@@ -1,0 +1,14 @@
+@import "../../style/ztao";
+
+.no_auth {
+  @include juzhong2();
+  height: 100vh;
+  font-size: 16px;
+}
+.react_home{
+  text-align: center;
+  padding-top: 80px;
+  >a{
+    margin: 0 30px;
+  }
+}

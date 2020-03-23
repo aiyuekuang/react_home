@@ -55,7 +55,7 @@ export let url_add = is_pro('', "", '');
 export let ip = getLocalIP();
 
 //本地调试时的端口
-export let dev_port = 3015
+export let dev_port = 3016
 
 //网站站点地址
 export let localhost = is_pro(`http://${ip}:${dev_port}`, "", "")

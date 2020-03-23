@@ -1,8 +1,9 @@
 import {observable, computed, action} from 'mobx';
 class userStoreClass {
     @observable user = {
-        name: 'admin',
-        role: '管理员'
+        userInfo:{},
+        role:[],
+        routes:[]
     };
     count = 0;
     @computed get userName(){

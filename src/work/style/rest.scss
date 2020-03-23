@@ -86,6 +86,14 @@ a{
   margin: 0 auto;
 }
 
+@mixin juzhong2($height:100%) {
+  height: $height;
+  display: flex;
+  > div {
+    margin: auto;
+  }
+}
+
 .mask{
   background: #000;
   opacity: 0.7;
