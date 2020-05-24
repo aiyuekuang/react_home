@@ -1,3 +1,8 @@
+# 2020.05.24
+1. 将react-router切换成下一代router库margaret，配置更简化了
+2. 将mobx删掉， ，极简配置
+
+
 # 2020.03.21
 1. 新增了react-router-pro集中路由配置
 3. 全面拥抱hook

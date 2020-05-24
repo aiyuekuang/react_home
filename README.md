@@ -12,11 +12,10 @@ react_home:适合开发各类前台项目或移动端项目
 react_home_admin：适合开发各类中后台项目,请移步[react_home_admin](https://github.com/aiyuekuang/react_home_admin)
 
 # 更新日志  
-**2020.03.21** [日志地址](https://github.com/aiyuekuang/react_home/blob/master/doc/doc.MD)  
-1. 新增了react-router-pro集中路由配置
-3. 全面拥抱hook
-4. 引入了最新的esn
-5. 各依赖进行了更新
+**2020.05.24** [日志地址](https://github.com/aiyuekuang/react_home/blob/master/doc/doc.MD)  
+1. 将react-router切换成下一代router库margaret，配置更简化了
+2. 将mobx删掉， ，极简配置
+
 
 ![列表图](https://github.com/aiyuekuang/react_home/blob/master/doc/img/react_homes.png?raw=true)
 
