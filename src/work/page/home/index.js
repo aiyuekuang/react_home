@@ -3,14 +3,14 @@
  */
 import React, {useEffect, useState} from 'react';
 import './index.scss'
-import {inject, observer} from 'mobx-react';
-import {history,Link} from "react-router-pro"
+import {history, Link, mg} from 'margaret'
 
 
-let index = (props) => {
-    const {userStore} = props;
+const index = (props) => {
+    const {} = props;
     // Declare a new state variable, which we'll call "count"
     const [count, setCount] = useState(0);
+    const {count1} = mg()
     //当前语言
 
     useEffect(() => {
@@ -24,15 +24,16 @@ let index = (props) => {
 
 
     function toOne() {
-        history.push("/page/p_1")
+        history.push('/page/p_1')
     }
 
     return (
         <div className="react_home">
-            <a onClick={()=>toOne()}>去第一个内页</a>
+            {count1}
+            <a onClick={() => toOne()}>去第一个内页</a>
             <Link to="/page/p_2">去第二个内页</Link>
         </div>
     );
 }
 
-export default inject( 'userStore')(observer(index));
+export default index

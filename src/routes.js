@@ -1,26 +1,35 @@
-import React, {Fragment} from 'react';
-import {baseRoutes, urlCompEnum} from './work/router/data';
-import {inject, observer} from 'mobx-react';
-import NotFound from '@components/public/404/404'
-import {RouterPro} from 'react-router-pro'
+/**
+ * Created by zengtao on 2017/5/19.
+ */
+import React, {Fragment, useEffect, useState, useContext} from 'react';
+import {Router,history,KeepRouter,mg} from "margaret"
+import {baseRoutes} from "./work/router/data"
+
+//本项目的模板页面
 
 
-@inject('userStore')
-@observer
-class App extends React.Component {
-    constructor(props, context) {
-        super(props, context);
+let defaultProps = {}
 
+export default function Index(prop) {
+
+
+    let props = {
+        ...defaultProps, ...prop
     }
 
+    const {} = props;
 
-    render() {
-        const {userStore} = this.props;
 
-        return (
-            <RouterPro data={[...baseRoutes]} compEnum={urlCompEnum} NotFound={NotFound}/>
-        );
-    }
+    useEffect(() => {
+        // Update the document title using the browser API
+
+        return () => {
+        }
+    }, []);
+
+
+
+    return (
+        <KeepRouter data={baseRoutes}/>
+    )
 }
-
-export default App;

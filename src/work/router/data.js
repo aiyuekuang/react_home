@@ -16,8 +16,7 @@ export const urlCompEnum = createMap([{
 export let baseRoutes = [{
     name: "主页",
     path: "/",
-    component: "home",
-    icon: "home",
+    component: Index,
 }, {
     name: "内页",
     icon: "page",
@@ -27,7 +26,7 @@ export let baseRoutes = [{
             name: "内页-1",
             icon: "user",
             path: "/p_1",
-            component: "page_1",
+            component: One,
         },
         {
             name: "内页-2",
