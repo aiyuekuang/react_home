@@ -43,7 +43,7 @@ const index = (props) => {
     return (
         <div className="react_home">
             <div>
-                我是count1:{count1}
+                我是margaret里数据流处理的count1:{count1}
             </div>
             <div>
                 <button onClick={()=>{
@@ -59,8 +59,8 @@ const index = (props) => {
             }}>减-count1</button>
             </div>
 
-            <a onClick={() => toOne()}>去第一个内页</a> &nbsp;&nbsp;&nbsp;&nbsp;
-            <Link to="/page/p_2">去第二个内页</Link>
+            <a onClick={() => toOne()}>margaret用history去第一个内页</a> &nbsp;&nbsp;&nbsp;&nbsp;
+            <Link to="/page/p_2">margaret用Link去第二个内页</Link>
             <div>
                 下面这个是由接口请求到的数据
             </div>
