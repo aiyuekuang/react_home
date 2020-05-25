@@ -5279,10 +5279,10 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-margaret@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.npmjs.org/margaret/-/margaret-0.0.1.tgz#4fde72ab74c56cf08dcf4e9239c4a95536bf0d38"
-  integrity sha512-kq5v+e3si/pP39igBvDb02qR5YGUcNvQm3mDUBakrv9NAlVQOu/TXPwLuDd7rQmgi8NMy1Dzw9aJuP8/O51HjQ==
+margaret@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.npmjs.org/margaret/-/margaret-0.0.3.tgz#49831dd9d35aa58aa3569f4bbeabedb91ce011bc"
+  integrity sha512-t2M6hXciMYc/mLsq1nRo1+Vt+xRyc+TUJB3kSagacCurfm8CMGXx0QllcyFq9+bvAjzUozGrjbETqWc1unbsyw==
   dependencies:
     babel-plugin-transform-decorators-legacy "^1.3.5"
     babel-preset-env "^1.7.0"
