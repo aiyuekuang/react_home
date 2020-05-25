@@ -23,7 +23,7 @@
     "nprogress": "^0.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "margaret": "^0.0.1"
+    "margaret": "^0.0.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
