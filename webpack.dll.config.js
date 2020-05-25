@@ -8,7 +8,6 @@ const vendors = [
   'axios',
   'react-router',
   'react-router-dom',
-  'antd',
   'moment'
 ];
 

@@ -3,7 +3,6 @@
  */
 import axios from 'axios'
 import {qus,cuns} from 'esn'
-import { message } from 'antd';
 //封装好的get和post接口，调用方法情况action文件
 export let Axios = axios.create({
     // baseURL: API_URL, //设置默认api路径
@@ -41,7 +40,6 @@ Axios.interceptors.response.use(function (response) {
                 break;
             case 401:
                 err.message = '未授权，请重新登录(401)';
-                message.error(err.response.headers.msg ? decodeURI(err.response.headers.msg) : "未登录，请重新登录");
                 break;
             case 403:
                 err.message = '拒绝访问(403)';

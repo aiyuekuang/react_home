@@ -1,8 +1,10 @@
 import {get_data, get_data_get} from '@common';
 
-export let list = (fun, page=1) => get_data('/list', {
-    page
+export let bizhi = (fun, page=1) => get_data('/riddle', {
+    page:0
 }, (data) => {
-    fun(data);
+    if(data.code === 200){
+        fun(data.data);
+    }
 });
 

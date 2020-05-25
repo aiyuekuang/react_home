@@ -1,8 +1,7 @@
 /**
  * Created by zengtao on 2017/5/19.
  */
-import React, {Fragment, Component, PureComponent,createRef} from 'react';
-import {Button, Input, Spin} from 'antd';
+import React, {Fragment, Component, PureComponent, createRef} from 'react';
 import {
     Router,
     Route,
@@ -34,7 +33,7 @@ export default class Index extends Component {
 
     constructor(props) {
         super(props);
-        this.up_tree=createRef();
+        this.up_tree = createRef();
     }
 
     state = {
@@ -64,12 +63,11 @@ export default class Index extends Component {
 
     render() {
         const {url} = this.props;
-        const {height,wait} = this.state;
+        const {height, wait} = this.state;
         return (
             <div className="content_body">
-                <Spin tip="加载中，请稍后..." spinning={wait} wrapperClassName="yn_edu_wangpan_wait">
-                    <iframe id="ifr" ref={this.up_tree} src={url} frameBorder="0" width="100%" onLoad={this.down} height={height}></iframe>
-                </Spin>
+                <iframe id="ifr" ref={this.up_tree} src={url} frameBorder="0" width="100%" onLoad={this.down}
+                        height={height}></iframe>
             </div>
         )
     }

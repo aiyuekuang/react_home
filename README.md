@@ -14,8 +14,11 @@ react_home_base：之前的react-router版本,请移步[react_home_base](https:/
 
 # 更新日志  
 **2020.05.24** [日志地址](https://github.com/aiyuekuang/react_home/blob/master/doc/doc.MD)  
-1. 将react-router切换成下一代router库margaret，配置更简化了
+1. 率先将react-router切换成下一代router库margaret，配置更简化了
 2. 将mobx删掉， ，极简配置
+3. 设置新的接口请求示例
+4. 首页界面样式调整，跳转，margaret示例更加完整
+5. 删减多余代码精简项目
 
 
 ![列表图](https://github.com/aiyuekuang/react_home/blob/master/doc/img/react_homes.png?raw=true)

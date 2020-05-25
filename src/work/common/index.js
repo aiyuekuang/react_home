@@ -4,7 +4,6 @@
 import React, {Fragment, Component, PureComponent} from 'react';
 import NProgress from 'nprogress';
 import {api} from '@config/common';
-import {notification,message} from 'antd';
 import {getData, postData} from '../../utils/fetchData';
 
 export const dateFormat = 'YYYY-MM-DD';
@@ -28,10 +27,6 @@ export const get_data = async (url = '', parm = {}, chenggong = () => {
     } catch (error) {
         NProgress.done();
         all_fun();
-        notification['error']({
-            message: '警告',
-            description: error.message
-        });
     }
 };
 
@@ -50,39 +45,6 @@ export const get_data_get = async (url = '', parm = {}, chenggong = () => {
     } catch (error) {
         NProgress.done();
         all_fun();
-        notification['error']({
-            message: '警告',
-            description: error.message
-        });
     }
 };
 
-//临时下载插件
-export let downloads = (output, downloadFileName = '文件') => {
-    if (window.navigator.msSaveBlob) {
-        // for ie 10 and later
-        try {
-            let blobObject = new Blob([output]);
-            window.navigator.msSaveBlob(blobObject, downloadFileName);
-        } catch (e) {
-            console.log(e);
-        }
-    } else {
-        let file = 'data:text/plain;charset=utf-8,';
-        let logFile = output;
-        let encoded = encodeURIComponent(logFile);
-        file += encoded;
-        let a = document.createElement('a');
-        a.href = logFile;
-        a.target = '_blank';
-        a.download = downloadFileName;
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-    }
-};
-
-export let uid = () => {
-    const now = +(new Date());
-    return `bee-${now}`;
-};

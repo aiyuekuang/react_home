@@ -8,7 +8,20 @@
 .react_home{
   text-align: center;
   padding-top: 80px;
-  >a{
-    margin: 0 30px;
+  width: 100vw;
+  font-size: 12px;
+  a{
+    color: $lanse;
+    cursor: pointer;
+  }
+  >div{
+    padding: 10px;
+    border: $biankuang;
+    margin: 5px 0;
+  }
+}
+.react_home_list{
+  >div{
+    padding: 5px 0;
   }
 }
