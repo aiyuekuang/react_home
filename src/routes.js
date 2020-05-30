@@ -30,6 +30,6 @@ export default function Index(prop) {
 
 
     return (
-        <KeepRouter data={baseRoutes}/>
+        <Router data={baseRoutes}/>
     )
 }

@@ -11,6 +11,8 @@ const index = (props) => {
     const {} = props;
     // Declare a new state variable, which we'll call "count"
     const [data, setData] = useState([]);
+    const [page, setPage] = useState(1);
+
     const {count1,dispatch} = mg()
     //当前语言
 
@@ -18,11 +20,11 @@ const index = (props) => {
         // Update the document title using the browser API
         bizhi((data)=>{
             setData(data.data)
-        })
+        },page)
         return () => {
             console.log('组件即将卸载----')
         }
-    }, []);
+    }, [page]);
 
 
     function toOne() {
@@ -66,6 +68,13 @@ const index = (props) => {
             </div>
             <div className="react_home_list">
                 {list}
+            </div>
+            <div className="react_home_list_add" onClick={()=>{
+                setPage(org => org +1)
+            }}>
+                <button>
+                    下一页
+                </button>
             </div>
         </div>
     );
