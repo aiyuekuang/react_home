@@ -21,8 +21,6 @@ react_home_base：之前的react-router版本,请移步[react_home_base](https:/
 5. 删减多余代码精简项目
 
 
-![列表图](https://github.com/aiyuekuang/react_home/blob/master/doc/img/react_homes.png?raw=true)
-
 # 功能与特色
 1. react_home_admin项目集成了当前react中最好得ui轮子antd，不解释，已配置好，直接使用
 2. 项目具备了本地开发和打包上线得3个不同状态得场景，在开发状态，本地服务已配置了http-proxy，方便用户跨域调用后端开发得接口，并且本地调试阶段用得是根目录下得index.html，打包上线得时候部署到服务器得是加过hash得index.html这样就避免了测试人员总是无法刷新出新得界面得问题
