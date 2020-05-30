@@ -73,3 +73,6 @@ react_home_base：之前的react-router版本,请移步[react_home_base](https:/
 # 希望
 * 本项目是根据react社区一些朋友分享得脚手架综合，并且实际项目运用后所得出得经验
 * 朋友们如果有一些对本项目得建议，或者想法欢迎issues，将持续改进
+
+# 联系我们
+QQ交流反馈群号：873937696
