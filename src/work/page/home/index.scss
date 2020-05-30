@@ -2,13 +2,16 @@
 
 button{
   background: $lanse;
-  border: none;
   height: 30px;
   border-radius: 4px;
   color: #fff;
   min-width: 60px;
   outline: none;    //消除默认点击蓝色边框效果
   cursor: pointer;
+  border: none;
+  &:hover{
+    background: $lvse;
+  }
 }
 
 .no_auth {

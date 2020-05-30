@@ -69,10 +69,10 @@ const index = (props) => {
             <div className="react_home_list">
                 {list}
             </div>
-            <div className="react_home_list_add" onClick={()=>{
-                setPage(org => org +1)
-            }}>
-                <button>
+            <div className="react_home_list_add">
+                <button onClick={()=>{
+                    setPage(org => org +1)
+                }}>
                     下一页
                 </button>
             </div>
