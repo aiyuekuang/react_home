@@ -19,7 +19,7 @@ react_home_base：之前的react-router版本,请移步[react_home_base](https:/
 3. 设置新的接口请求示例
 4. 首页界面样式调整，跳转，margaret示例更加完整
 5. 删减多余代码精简项目
-
+6. 本次更新，尝鲜较大，hook的成熟还需时日，margaret还在测试发布阶段，未上正式版，建议大家暂时勿商用哦，商用还是使用react_home_base，react_router_pro版本的
 
 # 功能与特色
 1. react_home_admin项目集成了当前react中最好得ui轮子antd，不解释，已配置好，直接使用
