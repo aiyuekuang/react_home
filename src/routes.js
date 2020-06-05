@@ -1,23 +1,23 @@
 /**
  * Created by zengtao on 2017/5/19.
  */
-import React, {Fragment, useEffect, useState, useContext} from 'react';
-import {Router,history,KeepRouter,mg} from "margaret"
-import {baseRoutes} from "./work/router/data"
-
+import React, {useEffect} from 'react';
+import {baseRoutes, urlCompEnum} from './work/router/data';
+import {inject, observer} from 'mobx-react';
+import NotFound from '@components/public/404/404'
+import {RouterPro} from 'react-router-pro'
 //本项目的模板页面
 
 
 let defaultProps = {}
 
-export default function Index(prop) {
-
+function index(prop) {
 
     let props = {
         ...defaultProps, ...prop
     }
 
-    const {} = props;
+    const {userStore} = props;
 
 
     useEffect(() => {
@@ -28,8 +28,9 @@ export default function Index(prop) {
     }, []);
 
 
-
     return (
-        <Router data={baseRoutes}/>
+        <RouterPro data={[...baseRoutes]} compEnum={urlCompEnum} NotFound={NotFound}/>
     )
 }
+
+export default inject('userStore')(observer(index));

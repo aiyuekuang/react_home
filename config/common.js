@@ -10,7 +10,7 @@ export function getLocalIP() {
                 alias.family === 'IPv4' &&
                 alias.address !== '127.0.0.1' &&
                 !alias.internal
-                // && alias.mac.split(':')[0] !== '00'
+                && alias.mac.split(':')[0] !== '00'
             ) {
                 IPAdress = alias.address;
             }

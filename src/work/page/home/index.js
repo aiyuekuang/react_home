@@ -3,24 +3,24 @@
  */
 import React, {useEffect, useState} from 'react';
 import './index.scss'
-import {history, Link, mg} from 'margaret'
-import {bizhi} from "@server/index";
+import {history, Link} from 'react-router-pro'
+import {bizhi} from '@server/index';
+import {inject, observer} from 'mobx-react';
 
 
 const index = (props) => {
-    const {} = props;
+    const {userStore} = props;
     // Declare a new state variable, which we'll call "count"
     const [data, setData] = useState([]);
     const [page, setPage] = useState(1);
 
-    const {count1,dispatch} = mg()
     //当前语言
 
     useEffect(() => {
         // Update the document title using the browser API
-        bizhi((data)=>{
+        bizhi((data) => {
             setData(data.data)
-        },page)
+        }, page)
         return () => {
             console.log('组件即将卸载----')
         }
@@ -31,38 +31,37 @@ const index = (props) => {
         history.push('/page/p_1')
     }
 
-    let list = data.map((data,i)=>{
+    let list = data.map((data, i) => {
         return (
             <div key={i}>
-            <div>
-                谜语：{data.title}
-            </div>
-            <div>
-                答案：{data.answer}
-            </div>
-        </div>)
+                <div>
+                    谜语：{data.title}
+                </div>
+                <div>
+                    答案：{data.answer}
+                </div>
+            </div>)
     })
     return (
         <div className="react_home">
             <div>
-                我是margaret里数据流处理的count1:{count1}
+                我是mobx里数据流处理的count1:{userStore.count1}
             </div>
             <div>
-                <button onClick={()=>{
-                    dispatch({
-                        type:"ADD"
-                    })
-                }}>加-count1</button>
+                <button onClick={() => {
+                    userStore.add()
+                }}>加count
+                </button>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <button onClick={()=>{
-                dispatch({
-                    type:"JIAN"
-                })
-            }}>减-count1</button>
+                <button onClick={() => {
+                    userStore.jian()
+
+                }}>减count
+                </button>
             </div>
 
-            <a onClick={() => toOne()}>margaret用history去第一个内页</a> &nbsp;&nbsp;&nbsp;&nbsp;
-            <Link to="/page/p_2">margaret用Link去第二个内页</Link>
+            <a onClick={() => toOne()}>react-router-pro用history去第一个内页</a> &nbsp;&nbsp;&nbsp;&nbsp;
+            <Link to="/page/p_2">react-router-pro用Link去第二个内页</Link>
             <div>
                 下面这个是由接口请求到的数据
             </div>
@@ -70,8 +69,8 @@ const index = (props) => {
                 {list}
             </div>
             <div className="react_home_list_add">
-                <button onClick={()=>{
-                    setPage(org => org +1)
+                <button onClick={() => {
+                    setPage(org => org + 1)
                 }}>
                     下一页
                 </button>
@@ -80,4 +79,4 @@ const index = (props) => {
     );
 }
 
-export default index
+export default inject('userStore')(observer(index));

@@ -13,13 +13,12 @@ react_home_admin：适合开发各类中后台项目,请移步[react_home_admin]
 react_home_base：之前的react-router版本,请移步[react_home_base](https://github.com/aiyuekuang/react_home_base)
 
 # 更新日志  
-**2020.05.24** [日志地址](https://github.com/aiyuekuang/react_home/blob/master/doc/doc.MD)  
-1. 率先将react-router切换成下一代router库margaret，配置更简化了
-2. 将mobx删掉， ，极简配置
-3. 设置新的接口请求示例
-4. 首页界面样式调整，跳转，margaret示例更加完整
-5. 删减多余代码精简项目
-6. 本次更新，尝鲜较大，hook的成熟还需时日，margaret还在测试发布阶段，未上正式版，建议大家暂时勿商用哦，商用还是使用react_home_base，react_router_pro版本的
+**2020.06.05** [日志地址](https://github.com/aiyuekuang/react_home/blob/master/doc/doc.MD)  
+1. 切换回react-router-pro + mobx的架构模式，维持商用标准
+2. 优化webpack打包机制，css压缩到最小，无重复打包情况
+3. 下次更新将再次研究数据与路由结合方案，将项目基础配置更加简洁，使用更简单
+
+![](.README_images/a988e68a.png)
 
 # 功能与特色
 1. react_home_admin项目集成了当前react中最好得ui轮子antd，不解释，已配置好，直接使用
