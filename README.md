@@ -14,7 +14,7 @@ react_home_base：之前的react-router版本,请移步[react_home_base](https:/
 
 # 更新日志  
 **2020.07.09** [日志地址](https://github.com/aiyuekuang/react_home/blob/master/doc/doc.MD)  
-1. 加入格式化规范prettier，webstorm和vscode用法自行百度
+1. 加入格式化规范prettier，webstorm和vscode用法自行百度，好处就是多人协作时，不会因为格式而导致git文件冲突
 2. 优化css打包
 3. 优化打包后目录规范
 

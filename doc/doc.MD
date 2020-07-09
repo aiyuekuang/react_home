@@ -1,5 +1,5 @@
 # 2020.07.09
-1. 加入格式化规范prettier，webstorm和vscode用法自行百度
+1. 加入格式化规范prettier，webstorm和vscode用法自行百度，好处就是多人协作时，不会因为格式而导致git文件冲突
 2. 优化css打包
 3. 优化打包后目录规范
 
