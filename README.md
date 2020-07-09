@@ -13,10 +13,10 @@ react_home_admin：适合开发各类中后台项目,请移步[react_home_admin]
 react_home_base：之前的react-router版本,请移步[react_home_base](https://github.com/aiyuekuang/react_home_base)
 
 # 更新日志  
-**2020.06.05** [日志地址](https://github.com/aiyuekuang/react_home/blob/master/doc/doc.MD)  
-1. 切换回react-router-pro + mobx的架构模式，维持商用标准
-2. 优化webpack打包机制，css压缩到最小，无重复打包情况
-3. 下次更新将再次研究数据与路由结合方案，将项目基础配置更加简洁，使用更简单
+**2020.07.09** [日志地址](https://github.com/aiyuekuang/react_home/blob/master/doc/doc.MD)  
+1. 加入格式化规范prettier，webstorm和vscode用法自行百度
+2. 优化css打包
+3. 优化打包后目录规范
 
 ![](.README_images/a988e68a.png)
 

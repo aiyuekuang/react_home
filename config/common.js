@@ -68,5 +68,3 @@ export let dns = ['www.baidu.com', 'www.qq.com']
 
 //接口的映射地址（dev的选项中，不要更改，就使用api就可以了）
 export let api = {name: "/api", url: "http://v1.alapi.cn"};
-
-

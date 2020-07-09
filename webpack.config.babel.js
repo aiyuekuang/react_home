@@ -1,17 +1,19 @@
 import path from 'path';
-
-const theme = require(path.join(__dirname, '/package.json')).theme;
 import HtmlWebpackPlugin from 'html-webpack-plugin'; //html
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'; //css压缩
 import ExtendedDefinePlugin from 'extended-define-webpack-plugin'; //全局变量
-const {CleanWebpackPlugin} = require('clean-webpack-plugin'); //清空
 import CopyWebpackPlugin from 'copy-webpack-plugin'; //复制静态html
 import webpack from 'webpack';
 import TerserPlugin from 'terser-webpack-plugin';
+import {api, dev_port, dns, getLocalIP, ip, localhost, title} from './config/common';
+import HappyPack from 'happypack';
+
+const theme = require(path.join(__dirname, '/package.json')).theme;
+const {CleanWebpackPlugin} = require('clean-webpack-plugin'); //清空
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; //视图分析webpack情况
-import {ip, title, dev_port, dns, localhost, api, getLocalIP} from './config/common';
-import HappyPack from 'happypack';
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+
 //多线程运行
 let happyThreadPool = HappyPack.ThreadPool({size: 4});
 let dev = process.env.NODE_ENV === 'development' ? 'development' : 'production';
@@ -30,22 +32,6 @@ const minimize = {
     production: true
 };
 
-const stylus = {
-    dev: ['cache-loader', 'style-loader', 'css-loader', 'stylus-loader'],
-    development: ['style-loader', 'css-loader', 'stylus-loader'],
-    production: [
-        {loader: MiniCssExtractPlugin.loader},
-        {
-            loader: 'css-loader',
-            options: {
-                minimize: true //压缩
-                // sourceMap: true,
-            }
-        },
-        {loader: 'stylus-loader'}
-    ]
-};
-
 /**
  * 公共插件
  */
@@ -56,8 +42,8 @@ const pluginsPublic = [
             to: path.resolve(__dirname, 'dist')
         },
         {
-            from: path.resolve(__dirname, './dll/Dll.js'),
-            to: path.resolve(__dirname, 'dist')
+            from: path.resolve(__dirname, './dll/js/Dll.js'),
+            to: path.resolve(__dirname, 'dist/js')
         }
     ]),
     new HtmlWebpackPlugin({
@@ -75,7 +61,7 @@ const pluginsPublic = [
     // new BundleAnalyzerPlugin(),
     new MiniCssExtractPlugin({
         filename: '[name].[hash].css',
-        chunkFilename: '[chunkhash].css'
+        chunkFilename: 'css/[chunkhash].css'
     }),
     new HappyPack({
         //多线程运行 默认是电脑核数-1
@@ -112,54 +98,94 @@ const plugins = {
 };
 
 export default {
-    optimization: dev_bool
-        ? {
-            runtimeChunk: {
-                name: 'manifest'
-            },
-            minimize: true,
-            minimizer: [
-                new TerserPlugin({
-                    cache: true,
-                    parallel: true,
-                    sourceMap: true, // Must be set to true if using source-maps in production
-                    terserOptions: {
-                        compress: {
-                            drop_console: true,
+    optimization: dev_bool ? {
+        runtimeChunk: {
+            name: 'manifest'
+        },
+        minimize: true,
+        minimizer: [
+            new TerserPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: true, // Must be set to true if using source-maps in production
+                terserOptions: {
+                    compress: {
+                        drop_console: true
+                    }
+                    // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
+                }
+            }),
+            new OptimizeCSSAssetsPlugin({
+                assetNameRegExp: /\.css$/g,
+                cssProcessor: require('cssnano'),
+                // cssProcessorOptions: cssnanoOptions,
+                cssProcessorPluginOptions: {
+                    preset: ['default', {
+                        discardComments: {
+                            removeAll: true
                         },
-                        // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
-                    }
-                })
-            ],
-            splitChunks: {
-                chunks: 'async',
-                minSize: 30000,
-                minChunks: 1,
-                maxAsyncRequests: 5,
-                maxInitialRequests: 3,
-                automaticNameDelimiter: '~', //名称分隔符，默认是~
-                name: true, //打包后的名称，默认是chunk的名字通过分隔符（默认是～）分隔
-                cacheGroups: {
-                    vendor: {
-                        name: 'vendor',
-                        chunks: 'initial',
-                        priority: 10,
-                        minChunks: 2, //最少被几个chunk引用
-                        reuseExistingChunk: true, //  如果该chunk中引用了已经被抽取的chunk，直接引用该chunk，不会重复打包代码
-                        test: /node_modules\/(.*)\.js/
-                    },
-                    styles: {
-                        name: 'index',
-                        test: /\.(scss|css)$/,
-                        chunks: 'all',
-                        minChunks: 1,
-                        reuseExistingChunk: true,
-                        enforce: true
-                    }
+                        normalizeUnicode: false
+                    }]
+                },
+                canPrint: true
+            })
+        ],
+        splitChunks: {
+            chunks: 'async',
+            minSize: 30000,
+            minChunks: 1,
+            maxAsyncRequests: 5,
+            maxInitialRequests: 3,
+            automaticNameDelimiter: '~', //名称分隔符，默认是~
+            name: true, //打包后的名称，默认是chunk的名字通过分隔符（默认是～）分隔
+            cacheGroups: {
+                vendor: {
+                    name: 'vendor',
+                    chunks: 'initial',
+                    priority: 10,
+                    minChunks: 2, //最少被几个chunk引用
+                    reuseExistingChunk: true, //  如果该chunk中引用了已经被抽取的chunk，直接引用该chunk，不会重复打包代码
+                    test: /node_modules\/(.*)\.js/
+                },
+                styles: {
+                    name: 'index',
+                    test: /\.(scss|css)$/,
+                    chunks: 'all',
+                    minChunks: 1,
+                    reuseExistingChunk: true,
+                    enforce: true
                 }
             }
         }
-        : {},
+    } : {
+        minimizer: [
+            new TerserPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: true, // Must be set to true if using source-maps in production
+                terserOptions: {
+                    compress: {
+                        drop_console: true
+                    }
+                    // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
+                }
+            }),
+            new OptimizeCSSAssetsPlugin({
+                assetNameRegExp: /\.css$/g,
+                cssProcessor: require('cssnano'),
+                // cssProcessorOptions: cssnanoOptions,
+                cssProcessorPluginOptions: {
+                    preset: ['default', {
+                        discardComments: {
+                            removeAll: true
+                        },
+                        normalizeUnicode: false
+                    }]
+                },
+                canPrint: true
+            })
+        ]
+    },
     devServer: {
         contentBase: path.join(__dirname, 'dist'), //开发服务运行时的文件根目录
         host: ip,
@@ -192,8 +218,8 @@ export default {
     output: {
         //出口
         path: path.resolve(__dirname, 'dist'), //出口路径
-        filename: '[name].[hash].js',
-        chunkFilename: '[chunkhash].js', //按需加载名称
+        filename: 'js/[name].[hash].js',
+        chunkFilename: 'js/[chunkhash].js', //按需加载名称
         publicPath: PUBLIC_PATH //公共路径
     },
     resolve: {
@@ -211,7 +237,7 @@ export default {
             '@page': path.resolve(__dirname, 'src/work/page'),
             '@utils': path.resolve(__dirname, 'src/utils'),
             '@mock': path.resolve(__dirname, 'mock'),
-            '@enum': path.resolve(__dirname, 'src/work/enum'),
+            '@enum': path.resolve(__dirname, 'src/work/enum')
         }
     },
     module: {
@@ -279,12 +305,12 @@ export default {
                     }
                 }, {
                     loader: 'less-loader', options: {
-                        javascriptEnabled: true
-                        // modifyVars: {
-                        //     'primary-color': '#1DA57A',
-                        //     'link-color': '#1DA57A',
-                        //     'border-radius-base': '2px',
-                        // }
+                        javascriptEnabled: true,
+                        modifyVars: {
+                            'primary-color': '#1DA57A',
+                            'link-color': '#1DA57A',
+                            'border-radius-base': '2px'
+                        }
                     }
                 }]
             },

@@ -1,3 +1,8 @@
+# 2020.07.09
+1. 加入格式化规范prettier，webstorm和vscode用法自行百度
+2. 优化css打包
+3. 优化打包后目录规范
+
 # 2020.06.05
 1. 切换回react-router-pro + mobx的架构模式，维持商用标准
 2. 优化webpack打包机制，css压缩到最小，无重复打包情况
