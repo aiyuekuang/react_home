@@ -1,3 +1,5 @@
+[![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=aiyuekuang)](https://github.com/anuraghazra/github-readme-stats)
+
 # react_home
 这是一个react的脚手架项目，其中包含着当前最新得脚手架配置方式，技术技术栈包括react16+antd+margaret+hook+webpack4+sass/less+axios，我会长期，并定期维护这个脚手架，将当下react生态圈最新技术运用进去,适用于新手或者关注进阶的朋友学习参考。（广大撸友觉得能用上的，也不要吝啬自己的star哦） 
  
