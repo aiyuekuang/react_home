@@ -96,7 +96,7 @@ export default (env, argv) => {
                             comments: false
                         }
                     }
-                }),
+                })
             ],
             splitChunks: {
                 chunks: 'async',
@@ -221,21 +221,22 @@ export default (env, argv) => {
                 },
                 {
                     test: /\.less$/,
-                    use: [{
-                        loader: 'css-loader?importLoaders=1',
-                        options: {
-                            minimize: minimize[isDev] //压缩
-                        }
-                    }, {
-                        loader: 'less-loader', options: {
-                            javascriptEnabled: true,
-                            modifyVars: {
-                                'primary-color': '#1DA57A',
-                                'link-color': '#1DA57A',
-                                'border-radius-base': '2px'
+                    use: [{loader: MiniCssExtractPlugin.loader},
+                        {
+                            loader: 'css-loader?importLoaders=1',
+                            options: {}
+                        }, {
+                            loader: 'less-loader', options: {
+                                lessOptions: {
+                                    javascriptEnabled: true,
+                                    modifyVars: {
+                                        'primary-color': '#1DA57A',
+                                        'link-color': '#1DA57A',
+                                        'border-radius-base': '2px'
+                                    }
+                                }
                             }
-                        }
-                    }]
+                        }]
                 },
                 {
                     test: /\.scss$/,
@@ -245,7 +246,6 @@ export default (env, argv) => {
                         {
                             loader: 'css-loader',
                             options: {
-                                minimize: minimize[isDev] //压缩
                                 // sourceMap: minimize[dev],
                             }
                         },

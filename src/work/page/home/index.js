@@ -6,6 +6,7 @@ import './index.scss'
 import {history, Link} from 'react-router-pro'
 import {bizhi} from '@server/index';
 import {inject, observer} from 'mobx-react';
+import {Button,Input} from "antd";
 
 
 const index = (props) => {
@@ -44,6 +45,8 @@ const index = (props) => {
     })
     return (
         <div className="react_home">
+            <Button>按钮</Button>
+            <Input placeholder="Basic usage" />
             <div>
                 我是mobx里数据流处理的count1:{userStore.count1}
             </div>
